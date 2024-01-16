@@ -40,10 +40,8 @@ Twitter: @abap34
 
 ---
 
-<!-- _header: Julia と 自分 -->
+<!-- _header: 自己紹介 -->
 
-
-<div class="section"> 自己紹介 </div>
 
 <!-- ![bg right h:600](img/lang.png) -->
 
@@ -53,48 +51,106 @@ Twitter: @abap34
 2. 機械学習や数学の勉強・調べ物
 3. 競プロ
 
+
+![bg right h:300](img/jl_demo.gif)
+
+
+
 ---
 
-<!-- _header: Julia と 自分 -->
+<!-- _header: 自己紹介 -->
+
+<div class="section"> 自己紹介 </div>
 
 
-![bg right h:400](img/gd1.gif)
-
+<br>
 
 ## ✅ Juliaのこんなところが気に入ってます！
 
-1. 綺麗な可視化ライブラリた
-3. パッケージ管理がやりやすい
-4. チャッとなんでもかける
-5. **速い！！**
+1. 綺麗な可視化・ベンチマークライブラリ
+   - Plotまわり・ `@code_...` マクロ, `BenchmarkTools.jl`  たち
+2. パッケージ管理ツール同梱
+   - 言語同梱がありがたい！ (友人間で共有するのに一苦労の言語も)
+3. チャッとかける
+   - Jupyter のサポート, 強力な REPL
+4. **速い！！**
+   - 速いは正義
+   - 裏が速いライブラリの「芸人」にならなくても素直に書いてそのまま速い
 
+---
+
+<!-- _header: Julia を使って解かれた・書かれたレポートたち -->
+
+<div class="section"> 自己紹介 </div>
+
+![h:200](anim.gif)  ![h:200](image-13.png)  ![h:200](train_drop.gif)  ![h:200](image-14.png) ![h:200](basic-norsurface.gif)  ![h:250](fitting_history.gif) ![h:200](gd1.gif)
+
+---
+
+
+<!-- _header:  自己紹介 -->
+
+
+<div class="columns">
+
+
+<div>
+
+<br>
+
+<br>
+<br>
+<br>
+
+
+
+one of 興味があるもの
+
+## **機械学習(特に深層学習)の**
+## **エンジニアリング的な基盤**
+
+
+
+
+</div>
+
+
+<div>
+
+![](image-17.png)
+
+<div class="center">
+
+
+
+自作DLフレームワーク: [JITrench.jl](https://github.com/abap34/JITrench.jl)
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+</div>
 
 
 ---
 
 
-# ところで
-
----
+<!-- _header:  自己紹介 -->
 
 
-# みなさん、微分していますか？
+one of 深層学習の基盤
 
----
-
-
-# わたしはしています.
-
----
+# **自動微分**
 
 
-なぜなら
 
----
-
-![bg left h:500](image-1.png) 
-
-## ⇦ こいつを使うと簡単にできるから！
 
 ---
 
@@ -102,10 +158,9 @@ Twitter: @abap34
 
 ## メイントピック
 
-- なぜ微分が必要なのか？ 
-- 微分を自動で求めるにはどういう方法があるのか？ 
+- なぜ自動で微分が求まると嬉しい？
+- 微分を自動で求めるにはどういう方法がある？
 - Juliaを使って計算機に微分をさせるには？
-
 
 
 
@@ -279,13 +334,6 @@ $$
 
 </div>
 
-<div class="cite">
-
-証明: 実は、 $g(\boldsymbol{v}) = -\nabla f(\boldsymbol{x}) \cdot \boldsymbol{v}$ なので、これを最大にするのは $\boldsymbol{v}$ が $\nabla f(\boldsymbol{x})$ と平行なときです.
-
-</div>
-
-
 
 
 ---
@@ -397,16 +445,61 @@ $$
 
 <!-- _header: 勾配降下法と深層学習 -->
 
+<!-- <div class="section"> 1.3 勾配降下法と機械学習 </div> -->
 
-(特に深層学習の文脈で)
+勾配降下法を使った深層学習モデルのパラメータの最適化は、
+実際やってみると非常に上手くいく
 
-勾配降下法を使った損失関数の最小化は経験的にかなりうまくいくことが知られている
-
-
-**⇨ 今この瞬間も世界中の計算機がせっせと勾配ベクトルを計算中**
+**⇨ 今この瞬間も世界中の計算機が**
+**せっせと勾配ベクトルを計算中**
 
 
 ![bg right h:500](image-3.png)
+
+
+---
+
+
+<!-- _header: 勾配降下法と深層学習 (※ ギャグです)-->
+
+<div class="section"> 1.3 勾配降下法と機械学習 </div>
+
+
+<br>
+
+
+
+- 2050年にはAI業務サーバの消費電力は 3000 Twh にのぼると予測されている [1] 
+
+- 日産リーフは 7.0 km/kWh で走るらしい
+
+![h:300](image-19.png)
+
+
+<div class="cite">
+[1] JST 低炭素社会戦略センター: 情報化社会の進展がエネルギー消費に与える影響 (Vol.2)
+−データセンター消費エネルギーの現状と将来予測および技術的課題 https://www.jst.go.jp/lcs/pdf/fy2020-pp-03.pdf 
+
+</div>
+
+
+---
+
+
+<!-- _header: 勾配降下法と深層学習  (※ ギャグです) -->
+
+<div class="section"> 1.3 勾配降下法と機械学習 </div>
+
+太陽 ~ 地球の距離は $1.5 \times 10^8$ km　くらい.
+
+$(2.1 \times 10^{16}) / (1.5 \times 10^8) = 1.4 \times 10^5$ 
+
+
+**⇨ $人類は、一年間で日産リーフを太陽に 140000 \ 台送りこめる電力を$**
+**$勾配の計算に費やしている。$**
+
+
+
 
 ---
 
@@ -1215,31 +1308,19 @@ https://www.researchgate.net/figure/Number-of-parameters-ie-weights-in-recent-la
 
 ---
 
-<!-- <div class="section"> 2.3 数式微分と自動微分は違う? </div>
 
 
-- 入出力が高次元の場合も高速に微分できないか？
-- 打ち切り誤差を発生させずに計算できないか？
-
-<div class="center">
-
-⇩ 
-
-### **自動微分** 
-
-</div>
-
----
-
-<div class="section"> 2.3 数式微分と自動微分は違う? </div>
+<!-- _header: 数式微分と自動微分は違う? -->
 
 
-おことわりポイント:
+各ツールに対して
+数式微分 / 自動微分のどちらかを
+きっちり分類するのは不毛ぎみ？
 
-各プログラムに対して数式微分と自動微分のどちらかを
-きっちり分類するのは不毛なので若干ふわっとします  (自動微分)
+![bg right h:400](img/ad_vs_sd.png)
 
---- -->
+
+--- 
 
 <div class="section"> 2.1 「自動で微分を求める」とは？ </div>
 
@@ -1368,6 +1449,8 @@ $f(x) = 4x+3$ は ...
 <div class="section"> 2.4 数式微分 </div>
 
 <br>
+<br>
+
 
 **✅ Julia ならプログラムそのものをデータとして扱う機構が整っている！**
 
@@ -1494,8 +1577,8 @@ $\dfrac{d}{dx} (f(x) \cdot g(x)) = f'(x) \cdot g(x) + f(x) \cdot g'(x)$
 
 <div class="cite">
 
-[1] よく数式微分の固有・不可避っぽい問題だ、みたいな文脈で語られるのですが、数値微分固有の問題ではないと言う主張もあります。僕もそう思います。
-[Soeren Laue, 2019, "On the Equivalence of Automatic and Symbolic Differentiation"](https://arxiv.org/abs/1904.02990)
+[1] よく数式微分の固有・不可避っぽい問題だ、みたいな文脈で語られるのですが、数値微分自体の問題ではないという指摘もあります。僕もそう思います。
+参考: [Soeren Laue, 2019, "On the Equivalence of Automatic and Symbolic Differentiation"](https://arxiv.org/abs/1904.02990)
 
 
 </div>
@@ -1531,7 +1614,7 @@ $\dfrac{d}{dx} (f(x) \cdot g(x)) = f'(x) \cdot g(x) + f(x) \cdot g'(x)$
 
 <br>
 
-#### 需要: 制御構文とかも許して柔軟な記述をしたい！
+#### 需要: 制御構文とかも許して柔軟な記述をしたい.
 
 
 ```julia
@@ -1564,6 +1647,11 @@ end
 
 coef = 1
 numerical_derivative(linear_regression_error, coef) # -27.999999474559445
+
+lr = 0.01
+for i in 1:100
+    coef -= lr * numerical_derivative(linear_regression_error, coef)
+end
 ```
 
 $\leftrightarrow$ 数式微分は、中身の式の構造を見る必要がある
@@ -1759,44 +1847,172 @@ end
 ---
 
 
-<!-- _header: 自動微分アルゴリズムの分類 -->
+<!-- _header: 自動微分のアイデア -->
 
 
 <div class="section"> 2.4 自動微分 </div>
 
-### 二つの主要な方法
 
-1. Forward Mode 
-2. Reverse Mode (Adjoint Mode)
+<div class="def">
+
+**[自動微分のアイデア]**
+
+連鎖律(Chaine Rule)...
+
+$$
+\frac{df}{dx} = \frac{df}{dg} \cdot \frac{dg}{dx}
+$$
+
+を使う
+
+
+
+</div>
+
+---
+
+
+<!-- _header: 自動微分のアイデア -->
+
+<div class="section"> 2.4 自動微分 </div>
+
+$f(x) = 2x^2 + 3x + 1$ を例に考える
+
+これを分解する...
+
+
+$$
+\begin{equation}
+\begin{split}
+y_1 &= x \\
+y_2 &= y_1^2 \\
+y_3 &= 2y_2 \\
+y_4 &= 3y_1 \\
+y_5 &= y_3 + y_4 \\
+y_6 &= y_5 + 1 \\
+\end{split}
+\end{equation}
+$$
+
+としたら、 $f(x) = y_6$ とする
+
+---
+
+<!-- _header: 自動微分のアイデア -->
+
+<div class="section"> 2.4 自動微分 </div>
+
+すると...
+
+$$
+\LARGE
+\dfrac{dy_6}{dx} = \color{red}{\underbracket{\dfrac{dy_6}{dy_5}}} \color{black} \cdot \dfrac{dy_5}{dx}
+$$
+
+<div class="center">
+
+
+**これは行けるはず！**
+
+
+</div>
+
+---
+
+<!-- _header: 自動微分のアイデア -->
+
+<div class="section"> 2.4 自動微分 </div>
+
+$\large{y_6 = y_5 + 1}$
+
+
+⇨ これは $f(x) = x + 1$ の微分ができるなら極めて容易に微分できる
+
+同様に、全ての微分を展開していくと...
+
+
+$$
+\large
+\dfrac{\partial y_6}{\partial x}=\dfrac{\partial y_6}{\partial y_5}\left(\dfrac{\partial y_5}{\partial y_3} \dfrac{\partial y_3}{\partial y_2} \dfrac{\partial y_2}{\partial y_1}+\dfrac{\partial y_5}{\partial y_4} \dfrac{\partial y_4}{\partial y_1}\right)
+$$
+
+---
+
+<!-- _header: 自動微分のアイデア -->
+
+<div class="section"> 2.4 自動微分 </div>
+
+
+<div class="columns">
+
+</div>
+
+$$
+\begin{equation}
+\begin{split}
+y_1 &= x \\
+y_2 &= y_1^2 \\
+y_3 &= 2y_2 \\
+y_4 &= 3y_1 \\
+y_5 &= y_3 + y_4 \\
+y_6 &= y_5 + 1 \\
+\end{split}
+\end{equation}
+$$
+
+<div class="center">
+
+... $\large\dfrac{\partial y_i}{\partial y_j}$ ($\small i \geq  j$) **は簡単な計算！**
+
+
+</div>
+
 
 
 ---
 
-<!-- _header: Forward Mode の自動微分 ~ Dual Number の導入 -->
+<!-- _header: 自動微分のアイデア -->
 
 <div class="section"> 2.4 自動微分 </div>
 
-次のような性質を持つ <span class="dot-text">数</span> を考える. 
-
 $$
-\Large
-\begin{cases}
-\varepsilon^2 = 0 \\
-\varepsilon \neq 0
-\end{cases}
+\begin{align}
+\dfrac{\partial y_6}{\partial x} &= \dfrac{\partial y_6}{\partial y_5}\left(\dfrac{\partial y_5}{\partial y_3} \dfrac{\partial y_3}{\partial y_2} \dfrac{\partial y_2}{\partial y_1}+\dfrac{\partial y_5}{\partial y_4} \dfrac{\partial y_4}{\partial y_1}\right) \\ \\
+&= 1 \cdot \left(1 \cdot 2 \cdot 2x + 1 \cdot 3 \right) \\ \\
+&= 4x + 3
+\end{align}
 $$
 
-これを満たす数は実数には存在しない. 
+<div class="center">
 
-ので、 実数に $\varepsilon$ を付け加えた集合での演算を考えてみる.
+⇩
+
+**全体が計算できた！**
+
+
+</div>
+
+---
+
+<!-- _header: 自動微分の基本的な構造 -->
+
+
+<div class="section"> 2.4 自動微分 </div>
+
+プログラム
+
+
+
+
+
 
 
 ---
 
-<!-- _header: Forward Mode の自動微分 ~ Dual Number の導入 -->
 
-<div class="section"> 2.4 自動微分 </div>
+<!-- _header: 自動微分の用語 -->
 
-
+Forward Mode = Top Down = TD = Tangent Linear Mode 
+Reverse Mode = Bottom Up = BU = Adjoint Mode
 
 
