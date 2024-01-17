@@ -69,14 +69,14 @@ Twitter: @abap34
 ## ✅ Juliaのこんなところが気に入ってます！
 
 1. 綺麗な可視化・ベンチマークライブラリ
-   - Plotまわり・ `@code_...` マクロ, `BenchmarkTools.jl`  たち
-2. パッケージ管理ツール同梱
-   - 言語同梱がありがたい！ (友人間で共有するのに一苦労の言語も)
-3. チャッとかける
+   - Plotまわり, `@code_...` マクロ, `BenchmarkTools.jl`  たち
+2. パッケージ管理ツール
+   - 言語同梱で超便利 (友人間で共有するのに一苦労の言語も)
+3. すぐ書ける すぐ動く
    - Jupyter のサポート, 強力な REPL
 4. **速い！！**
-   - 速いは正義
-   - 裏が速いライブラリの「芸人」にならなくても素直に書いてそのまま速い
+   - 速度は正義
+   - 裏が速いライブラリの「芸人」にならなくても、素直に書いてそのまま速い
 
 ---
 
@@ -89,7 +89,7 @@ Twitter: @abap34
 ---
 
 
-<!-- _header:  自己紹介 -->
+<!-- _header: 今日のお話 -->
 
 
 <div class="columns">
@@ -107,8 +107,8 @@ Twitter: @abap34
 
 one of 興味があるもの
 
-## **機械学習(特に深層学習)の**
-## **エンジニアリング的な基盤**
+## **機械学習(特に深層学習)**
+## **の基盤**
 
 
 
@@ -124,7 +124,7 @@ one of 興味があるもの
 
 
 
-自作DLフレームワーク: [JITrench.jl](https://github.com/abap34/JITrench.jl)
+[:自作DLフレームワーク](https://github.com/abap34/JITrench.jl)
 
 
 </div>
@@ -143,12 +143,16 @@ one of 興味があるもの
 ---
 
 
-<!-- _header:  自己紹介 -->
+<!-- _header: 今日のお話 -->
 
 
 one of 深層学習の基盤
 
 # **自動微分**
+
+<br>
+
+について話します.
 
 
 ---
@@ -161,7 +165,7 @@ one of 深層学習の基盤
 2. 微分を求めたいことがあって既存のライブラリを使っているけど、
 どの場面でどれを使うのが適切かわからない
 3. 自分の計算ルーチンに微分の計算を組み込みたいけどやり方がわからない
-4. 自動微分に興味が湧いて仕方がない
+4. え、自動微分ってただ計算するだけじゃないの？何がおもしろいの？
 
 ---
 
@@ -232,7 +236,7 @@ one of 深層学習の基盤
 4.1 ChainRules
 
 ### [5] まとめ 
-### [6] 付録・参考文献
+### [6] 参考になる文献
 
 
 
@@ -1587,7 +1591,7 @@ $\dfrac{d}{dx} (f(x) \cdot g(x)) = f'(x) \cdot g(x) + f(x) \cdot g'(x)$
 <div class="cite">
 
 [1] よく数式微分の固有・不可避っぽい問題だ、みたいな文脈で語られるのですが、数値微分自体の問題ではないという指摘もあります。僕もそう思います。
-参考: [Soeren Laue, 2019, "On the Equivalence of Automatic and Symbolic Differentiation"](https://arxiv.org/abs/1904.02990)
+参考: Laue, S. (2019). On the Equivalence of Automatic and Symbolic Differentiation. ArXiv. /abs/1904.02990
 
 
 </div>
@@ -2031,3 +2035,42 @@ Prefix たち
 - Backward = Reverse = Top Down = TD = Adjoint = 後退型 = 高速自動微分
 
 
+---
+
+<!-- _header: 自動微分の勉強で参考になる文献-->
+
+<style scoped>
+  {
+    font-size: 1.0em;
+}
+</style>
+
+<br>
+
+
+1.  久保田光一, 伊里正夫 「アルゴリズムの自動微分と応用」 コロナ社 (1998)
+    1. 自動微分そのものついて扱ったおそらく唯一の和書です.　詳しいです.
+    2. 形式的な定義から、計算グラフの縮小のアルゴリズムや実装例など実用まで触れられています.
+    3. サンプルコードは、FORTRAN(😐), C++ でやはり全体的に古めの実装という感じです.
+2. 斉藤康毅 「ゼロから作るDeep Learning ③」 O'Reilly Japan (2020)
+    1. トレースベースの Reverse AD を Python で実装します. 
+    2. Step by step で丁寧に進んでいくので、とてもおすすめです.
+    3. 自動微分自体について扱った本ではないため、その辺りの説明は若干手薄かもしれません.
+3. Baydin, A. G., Pearlmutter, B. A., Radul, A. A., & Siskind, J. M. (2015). Automatic differentiation in machine learning: A survey. ArXiv. /abs/1502.05767
+    1. 機械学習 x AD のサーベイですが、機械学習に限らず AD の歴史やトピックを広く取り上げてます.
+    2. 少し内容が古くなっているかもしれません.
+4. [Differentiation for Hackers](https://github.com/MikeInnes/diff-zoo) 
+   1. Flux.jl  や Zygote.jl の開発をしている Mike J Innes さんが書いた自動微分の解説です。 Juliaで動かしながら勉強できます. おすすめです.
+5. Innes, M. (2018). Don't Unroll Adjoint: Differentiating SSA-Form Programs. ArXiv. /abs/1810.07951
+   1. Zygote.jl の論文です. かなりわかりやすいです.
+6. [Zygote.jl のドキュメントの用語集](https://fluxml.ai/Zygote.jl/stable/glossary/)
+   1. 自動微分は必要になった応用の人がやったり、コンパイラの人がやったり、数学の人がやったりで用語が乱立しまくっているのでこちらを参照して整理すると良いです
+   2. 僕の知る限り、 (若干のニュアンスがあるかもしれませんが) Reverse AD の別表現として以下があります.
+   Backward Mode AD = Reverse Mode AD = Fast Differentiation = Algoroihmic Differentiation = Adjoint Differentiation + その訳語たち, 微妙な表記揺れたち
+7. [JuliaDiff](https://juliadiff.org/)
+   1. Julia での微分についてまとまっています。ここにあるパッケージのどれかを用途に応じて選ぶのが良いです。
+8. [Chainer のソースコード](https://github.com/chainer)
+   1. Chainer は Python製の深層学習フレームワークですが、既存の巨大フレームワークと比較すると、裏も Pythonでとても読みやすいです.
+   2. 気になる実装があったら当たるのがおすすめです. また議論もいろいろと残っているのでそれを巡回するだけでとても勉強になります.
+   
+                              
