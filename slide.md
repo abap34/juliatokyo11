@@ -61,7 +61,7 @@ Twitter: @abap34
 
 <!-- _header: 自己紹介 -->
 
-<div class="section"> 自己紹介 </div>
+<div class="section"> Introduction </div>
 
 
 <br>
@@ -82,7 +82,7 @@ Twitter: @abap34
 
 <!-- _header: Julia を使って解かれた・書かれたレポートたち -->
 
-<div class="section"> 自己紹介 </div>
+<div class="section"> Introduction </div>
 
 ![h:200](anim.gif)  ![h:200](image-13.png)  ![h:200](train_drop.gif)  ![h:200](image-14.png) ![h:200](basic-norsurface.gif)  ![h:250](fitting_history.gif) ![h:200](gd1.gif)
 
@@ -90,6 +90,7 @@ Twitter: @abap34
 
 
 <!-- _header: 今日のお話 -->
+
 
 
 <div class="columns">
@@ -146,6 +147,8 @@ one of 興味があるもの
 <!-- _header: 今日のお話 -->
 
 
+<div class="section"> Introduction </div>
+
 one of 深層学習の基盤
 
 # **自動微分**
@@ -159,6 +162,8 @@ one of 深層学習の基盤
 
 <!-- _header: 今日話すこと -->
 
+<div class="section"> Introduction </div>
+
 ## こんなことがありませんか？
 
 1. 深層学習フレームワークを使っているけど、あまり中身がわかっていない.
@@ -171,17 +176,22 @@ one of 深層学習の基盤
 
 <!-- _header: 今日話すこと -->
 
+<div class="section"> Introduction </div>
+
 <br>
+
+<br>
+
 
 <div class="proof">
 
 **[メインテーマ]**
 
 - 自動で微分を求めることのモチベーション
-- 自動で微分を求めるアルゴリズムたちの紹介と特徴・実装
+- 自動で微分を求めるアルゴリズムたちの紹介と実装
 - 一般的な自動微分の実装
 - 自動微分の先進的な研究 (Julia まわりを中心に)
-
+- 微分ライブラリの紹介
 
 
 
@@ -190,8 +200,9 @@ one of 深層学習の基盤
 
 <div style="font-size: 0.8em;">
 
-キーワード :  勾配降下法, 数値微分, 数式微分, 自動微分, 誤差評価, 深層学習フレームワーク, 
-計算グラフ, Souce code transformation, SSA形式
+こんなワードが出てきます :  
+勾配降下法, 数値微分, 数式微分, 自動微分, 誤差評価, 深層学習フレームワーク, Define and/by Run
+計算グラフ, Wengert List, Source Code Transformation(SCT), SSA形式
 
 </div>  
 
@@ -201,6 +212,8 @@ one of 深層学習の基盤
 ---
 
 <!-- _header: おしながき -->
+
+<div class="section"> Introduction </div>
 
 <br>
 
@@ -215,10 +228,10 @@ one of 深層学習の基盤
 
 ### [2] 自動で微分
 2.1 「自動で微分を求める」とは
-2.2 数値微分 
-2.3 数式微分と自動微分は違う?
-2.4 数式微分 
-2.5 自動微分 
+2.2 微分の近似─数値微分 
+2.3 誤差なしの微分 ─数式微分
+2.4 式の微分からアルゴリズムの微分へ 
+2.5 自動微分
 
 </div>
 
