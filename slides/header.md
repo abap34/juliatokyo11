@@ -3,7 +3,7 @@ marp: true
 paginate: true
 math: mathjax
 theme: honwaka
-transition: fade
+transition: cover
 ---
 
 $$
