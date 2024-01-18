@@ -20,7 +20,7 @@ theme: honwaka
 GitHub: @abap34
 Twitter: @abap34
 
-![bg right h:400](img/abap34.png)
+![bg right h:400](../img/abap34.png)
 
 
 ---
@@ -37,7 +37,7 @@ Twitter: @abap34
 3. 競プロ
 
 
-![bg right h:300](img/jl_demo.gif)
+![bg right h:300](../img/jl_demo.gif)
 
 
 
@@ -68,7 +68,7 @@ Twitter: @abap34
 
 <div class="section"> Introduction </div>
 
-![h:200](anim.gif)  ![h:200](image-13.png)  ![h:200](train_drop.gif)  ![h:200](image-14.png) ![h:200](basic-norsurface.gif)  ![h:250](fitting_history.gif) ![h:200](gd1.gif)
+![h:200](../img/anim.gif)  ![h:200](../img/image-13.png)  ![h:200](../img/train_drop.gif)  ![h:200](../img/image-14.png) ![h:200](../img/basic-norsurface.gif)  ![h:250](../img/fitting_history.gif) ![h:200](../img/gd1.gif)
 
 ---
 
@@ -103,7 +103,7 @@ one of 興味があるもの
 
 <div>
 
-![](image-17.png)
+![](../img/jitrench.png)
 
 <div class="center">
 
@@ -116,9 +116,6 @@ one of 興味があるもの
 
 
 </div>
-
-
-
 
 
 
