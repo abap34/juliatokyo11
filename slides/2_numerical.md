@@ -18,12 +18,8 @@ theme: honwaka
 ## 2.4 自動微分とトレース
 ## 2.5 自動微分とソースコード変換
 
-
-
-
 ---
 
-<div class="section"> 2.2 数値微分 </div>
 
 # **2.1 微分の近似─数値微分**
 
@@ -42,7 +38,7 @@ end
 
 <!-- _header: 数値微分のアイデア -->
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 
 ### 微分の定義  
@@ -61,7 +57,7 @@ $$
 <!-- _header: 数値微分の実装 -->
 
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 
 ```julia
@@ -84,7 +80,7 @@ f′(x)                      # 0.5000000000000001
 <!-- _header: + 数値微分のメリット -->
 
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 
 
@@ -99,7 +95,7 @@ f′(x)                      # 0.5000000000000001
 
 <!-- _header: 数値微分のメリット ~ 実装が容易 -->
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 ### これだけで完了
 
@@ -122,7 +118,7 @@ f′(x)                      # 0.5000000000000001
 
 <!-- _header: 数値微分のメリット ~ 実装が容易 -->
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 <br>
 
@@ -150,7 +146,7 @@ end
 
 <!-- _header: 数値微分のメリット ~ なんでも計算可能 -->
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 
 
@@ -170,7 +166,7 @@ end
 
 <!-- _header: 数値微分のデメリット -->
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 
 
@@ -183,7 +179,7 @@ end
 
 <!-- _header: 数値微分の誤差 ~ 打ち切り誤差 -->
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 <div class="columns">
 
@@ -223,7 +219,7 @@ $$
 <br>
 
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 
 <div class="thm">
@@ -257,7 +253,7 @@ $$
 
 <!-- _header: 誤差の最小化 -->
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 ### 実験:
 
@@ -297,7 +293,7 @@ $h < 10^{-8}$ くらいになるとむしろ
 
 
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 
 
@@ -333,7 +329,7 @@ $$
 <!-- _header: 数値微分の改良 -->
 
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 ### 誤差への対応
 
@@ -345,7 +341,7 @@ $$
 <!-- _header: 数値微分の改良 ~ 打ち切り誤差の改善   -->
 
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 ### 1. 打ち切り誤差への対応
 
@@ -362,7 +358,7 @@ $$
 
 <!-- _header: 数値微分の改良 ~ 打ち切り誤差の改善   -->
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 
 
@@ -386,7 +382,7 @@ $$
 
 <!-- _header: 中心差分による２次精度の数値微分  -->
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 実はこれの方が精度がよい！
 
@@ -417,7 +413,7 @@ $Ax = e_2$ を満たす $x$ を $h$ で割ったのが求めたい重みとわ�
 
 <!-- _header: 数値微分の改良 ~ 桁落ちへの対応  -->
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 ### 2. 桁落ちへの対応
 
@@ -453,21 +449,21 @@ $E(h) \approx \sqrt{n} \varepsilon + \dfrac{n f^{(n+1)}(x)}{(n+1)!} h^{n-1}$ ($\
 ---
 
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 
-![h:500](img/numd2.png)
+![h:500](../img/numd2.png)
 
 結構いい感じ？
 
 ---
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 <br>
 <br>
 
-![h:530](img/numd3.png)
+![h:530](../img/numd3.png)
 
 🤨
 
@@ -475,7 +471,7 @@ $E(h) \approx \sqrt{n} \varepsilon + \dfrac{n f^{(n+1)}(x)}{(n+1)!} h^{n-1}$ ($\
 
 ---
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 ### デメリット3. 計算コストが高い
 
@@ -483,7 +479,7 @@ $E(h) \approx \sqrt{n} \varepsilon + \dfrac{n f^{(n+1)}(x)}{(n+1)!} h^{n-1}$ ($\
 
 <!-- _header: 多変数関数への拡張 -->
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 <br>
 
@@ -511,7 +507,7 @@ end
 
 <!-- _header: $n$ 回評価は致命的 -->
 
-<div class="section"> 2.2 数値微分 </div>
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 <br>
 
@@ -525,7 +521,7 @@ end
 <div class="center">
 
 
-![h:400](image-5.png)
+![h:400](../img/param-scatter.png)
 
 
 </div>
@@ -535,10 +531,13 @@ end
 https://www.researchgate.net/figure/Number-of-parameters-ie-weights-in-recent-landmark-neural-networks1-2-31-43_fig1_349044689 より引用
 </div>
 
+---
 
+<!-- _header: 問題点 -->
 
+1. より少ない評価の回数で勾配を計算できないか？
+2. 誤差をより小さくできないか？
 
-
-
+## ⇨ **数式微分** へ
 
 ---
