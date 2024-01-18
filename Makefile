@@ -4,9 +4,9 @@ SRC_FILES = $(wildcard $(SRC_DIR)/*[0-9]_*.md)
 OUTPUT_FILE = $(BUILD_DIR)/slide.md
 MARPRC_FILE = .marprc.yml
 
-all: clean compile pdf html
+all: clean preprocess pdf html pptx
 
-compile: $(OUTPUT_FILE)
+preprocess: $(OUTPUT_FILE)
 	@echo "Compiling slides..."
 
 $(OUTPUT_FILE): $(SRC_FILES)
@@ -22,21 +22,27 @@ $(OUTPUT_FILE): $(SRC_FILES)
 		tail -n +7 "$$file" >> $(OUTPUT_FILE); \
 	done
 
-pdf: compile
+pdf: preprocess
 	@echo "Creating PDF..."
 	@marp $(OUTPUT_FILE) --config-file $(MARPRC_FILE) --output $(BUILD_DIR)/slide.pdf
 
-html: compile
+html: preprocess
 	@echo "Creating HTML..."
 	@marp $(OUTPUT_FILE) --config-file $(MARPRC_FILE) --output $(BUILD_DIR)/slide.html
 
-preview: compile
-	@echo "Previewing slides..."
+pptx: preprocess
+	@echo "Creating PPTX..."
+	@marp $(OUTPUT_FILE) --config-file $(MARPRC_FILE) --output $(BUILD_DIR)/slide.pptx
+
+
+preview: clean preprocess
+	@echo "Creating preview..."
 	@marp $(OUTPUT_FILE) --config-file $(MARPRC_FILE) --preview
+
 
 clean:
 	@echo "Cleaning up..."
 	@rm -rf $(BUILD_DIR)
 	@rm -rf honwaka-theme
 
-.PHONY: all compile pdf html preview clean
+.PHONY: all preprocess pdf html preview clean
