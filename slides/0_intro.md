@@ -109,14 +109,12 @@ one of 興味があるもの
 
 
 
-[:自作DLフレームワーク](https://github.com/abap34/JITrench.jl)
-
-
-</div>
-
+https://github.com/abap34/JITrench.jl
 
 </div>
 
+
+</div>
 
 
 </div>
@@ -128,15 +126,15 @@ one of 興味があるもの
 <!-- _header: 今日のお話 -->
 
 
-<div class="section"> Introduction </div>
+
 
 one of 深層学習の基盤
 
-# **自動微分**
+# **自動微分** 
 
-<br>
+![bg right:63% h:450](../img/plt1.png)
 
-について話します.
+
 
 
 ---
