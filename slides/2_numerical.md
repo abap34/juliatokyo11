@@ -198,7 +198,6 @@ end
 <div>
 
 
-
 $$
 \LARGE \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}
 $$
@@ -500,12 +499,12 @@ end
 ```
 
 
-#### ⇨ 関数を $n$ 回評価する必要がある.
+#### ⇨ $f$ を $n$ 回評価する必要がある.
 
 ---
 
 
-<!-- _header: $n$ 回評価は致命的 -->
+<!-- _header: 多変数関数への拡張  -->
 
 <div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
@@ -516,15 +515,8 @@ end
 ##### ✅ 応用では $f$ が重く, $n$ が大きくなりがち ⇨ $n$ 回評価は高コスト
 
 
-<br>
 
-<div class="center">
-
-
-![h:400](../img/param-scatter.png)
-
-
-</div>
+![h:400 center](../img/param-scatter.png)
 
 
 <div class="cite">
@@ -534,6 +526,8 @@ https://www.researchgate.net/figure/Number-of-parameters-ie-weights-in-recent-la
 ---
 
 <!-- _header: 問題点 -->
+
+<div class="section"> 2.1 微分の近似 ─数値微分 </div>
 
 1. より少ない評価の回数で勾配を計算できないか？
 2. 誤差をより小さくできないか？
