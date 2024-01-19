@@ -37,9 +37,6 @@ Twitter: @abap34
 3. 競プロ
 
 
-![bg right h:300](../img/jl_demo.gif)
-
-
 
 ---
 
@@ -68,7 +65,7 @@ Twitter: @abap34
 
 <div class="section"> Introduction </div>
 
-![h:200](../img/anim.gif)  ![h:200](../img/image-13.png)  ![h:200](../img/train_drop.gif)  ![h:200](../img/image-14.png) ![h:200](../img/basic-norsurface.gif)  ![h:250](../img/fitting_history.gif) ![h:200](../img/gd1.gif)
+![h:200](../img/anim.gif)  ![h:200](../img/report1.png)  ![h:200](../img/train_drop.gif)  ![h:200](../img/report2.png) ![h:200](../img/basic-norsurface.gif)  ![h:250](../img/fitting_history.gif) ![h:200](../img/gd1.gif)
 
 ---
 
