@@ -1,5 +1,7 @@
 *.png
 *.pptx
-img
 *.sh
 *.gif
+build/
+img/
+paper/
