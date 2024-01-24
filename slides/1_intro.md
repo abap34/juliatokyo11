@@ -104,7 +104,7 @@ $$
 <div class="section"> 1.1 微分のおさらい </div>    
 
 ### ✅　勾配ベクトルの重要ポイント
-##  勾配ベクトルは関数の値が最も大きくなる方向を指し示す
+##  $- \nabla f(\boldsymbol{x})$ は $\boldsymbol{x}$ における $f$ の値がもっとも小さくなる方向を指す
 
 ---
 
@@ -128,6 +128,9 @@ $$
 
 </div>
 
+
+
+... せっかく Julia を使っているので視覚的に確かめてみる
 
 
 ---
@@ -180,17 +183,39 @@ $$
 ---
 
 
+<!-- _header: 実例で見てみる -->
+
+<div class="section"> 1.1 微分のおさらい </div>
+
+
+![h:550 center](../img/gd2d.png)
+
+
+
+---
+
+
+
+
 <!-- _header: 勾配降下法 -->
 
 
 
 <br>
 
-✅ **勾配ベクトルは関数の値が大きくなる方向を指し示す**
+✅ **$-\nabla f(\boldsymbol{x})$ は小さくなる方を指す**
 
 ![bg right h:500](../img/gd3d.gif)
 
-⇨ $-\nabla f(x, y)$ の方向にちょっとづつ点を動かしていけば関数のそこそこ小さい値を取る点を探しに行ける
+<div style="text-align: center;">
+
+⇩
+
+</div>
+
+
+
+$-\nabla f(x, y)$ の方向にちょっとづつ点を動かしていけば関数のそこそこ小さい値を取る点を探しに行ける
 
 ---
 
@@ -210,8 +235,61 @@ $$
 
 </div>
 
-✅ 一般の $f$ について大域的な解を求められる保証はないが、
-そこそこ小さい値を取る点を探しに行ける
+**✅ $\large{f}$ が微分可能でさえあればいつもある程度小さい値を探しに行ける強力な手法！**
+
+---
+
+<!-- _header: 勾配降下法 -->
+
+
+$f(x, y) = x^2 + y^2$
+
+の勾配降下法による最小値の探索
+
+
+![bg right h:600](../img/gd-3d-sphere.gif)
+
+
+
+---
+
+<!-- _header: 勾配降下法 -->
+
+<style scoped>
+  p {
+    font-size: 0.8em;
+  }
+</style>
+
+<br>
+
+
+
+$$
+\begin{split}
+f(x, y) = & \left( 1 - \frac{1}{1 + 0.05 \cdot x^{2} + \left( y - 10 \right)^{2}} \right. \\
+& - \frac{1}{1 + 0.05 \cdot \left( x - 10 \right)^{2} + y^{2}} \\
+& - \frac{1.5}{1 + 0.03 \cdot \left( x + 10 \right)^{2} + y^{2}} \\
+& - \frac{2}{1 + 0.05 \cdot \left( x - 5 \right)^{2} + \left( y + 10 \right)^{2}} \\
+& - \left. \frac{1}{1 + 0.1 \cdot \left( x + 5 \right)^{2} + \left( y + 10 \right)^{2}} \right) \\
+& \cdot \left( 1 + 0.0001 \cdot \left( x^{2} + y^{2} \right)^{1.2} \right)
+\end{split}
+$$
+
+
+の勾配降下法による最小値の探索.
+
+<div class="cite">
+
+元ネタ: Ilya Pavlyukevich, "Levy flights, non-local search and simulated annealing", Journal of Computational Physics 226 (2007) 1830-1844. 
+
+</div>
+
+<!-- Five-Well Potential 関数 -->
+
+
+
+![bg right](../img/gd-3d-pf.gif)
 
 
 ---
@@ -220,20 +298,25 @@ $$
 
 <div class="section"> 1.3 勾配降下法と機械学習 </div>
 
-機械学習の典型的な問題設定
+### 機械学習の典型的な問題設定:
 
 <div class="def">
 
-学習データ $\mathcal{D} = \{(\boldsymbol{x}_i, y_i)\}_{i=1}^n$ が与えられたとき、 
+学習データ $\mathcal{D} = \{(\boldsymbol{x}_i, y_i)\}_{i=1}^n$ があるので、
 
-損失関数
-$$
-L(\boldsymbol{w}; \mathcal{D})
-$$
-
-をなるべく小さくする $\boldsymbol{w}$ を求めよ
+パラメータ $\boldsymbol{w}$ を変化させて 損失関数 $L(\boldsymbol{w}; \mathcal{D})$ をなるべく小さくせよ
 
 </div>
+
+<div style="text-align: center;">
+
+⇩
+
+</div>
+
+
+関数の最小値を探索する問題 ... 勾配降下法がいけそう！
+
 
 ---
 
@@ -242,10 +325,8 @@ $$
 <!-- <div class="section"> 1.3 勾配降下法と機械学習 </div> -->
 
 勾配降下法を使った深層学習モデルのパラメータの最適化は、
-実際やってみると非常に上手くいく
+<span class="dot-text">実際やってみると </span>  非常に上手くいく
 
-**⇨ 今この瞬間も世界中の計算機が**
-**せっせと勾配ベクトルを計算中**
 
 
 ![bg right h:500](../img/loss-history.png)
@@ -255,56 +336,99 @@ $$
 ---
 
 
-<!-- _header: 勾配の計算法を考える -->
+<!-- _header: 勾配降下法と深層学習 -->
 
-<div class="section"> 1.3 勾配降下法と機械学習 </div>
+<!-- <div class="section"> 1.3 勾配降下法と機械学習 </div> -->
 
-<div class="def">
 
-学習データ $\mathcal{D} = \{(\boldsymbol{x}_i, y_i)\}_{i=1}^n$ が与えられたとき、 
+基本的に、深層学習モデルは
+勾配降下法を使って訓練
 
-損失関数
-$$
-L(\boldsymbol{w}; \mathcal{D})
-$$
 
-をなるべく小さくする $\boldsymbol{w}$ を求めよ
+**⇨ 今この瞬間も世界中の計算機が
+せっせと勾配ベクトルを計算中**
+
+
+![bg right h:500](../img/gd-illust.png)
+
+
+
+<div class="cite">
+
+2050年にはAI業務サーバの消費電力は 3000 Twh にのぼると予測されているらしいです。(https://www.jst.go.jp/lcs/pdf/fy2020-pp-03.pdf)
+このうちどれだけの電力が学習(+そのうちの勾配の計算) に使われているかはわかりませんが、上の電力で日産リーフ五億六千万台を地球一周させることができます。そう考えると勾配の計算の効率化を考えることに多少は時間を使っても良さそうな気になってきます。
 
 </div>
 
-勾配降下法で解くには...
-$\nabla L$ を使って 
-$\boldsymbol{w}$ を更新していけば良い
 
 ---
 
-<!-- _header: 勾配の計算法を考える -->
 
-<br>
+<!-- _header: 勾配の計算法を考える -->
 
 <div class="section"> 1.3 勾配降下法と機械学習 </div>
 
 <div class="def">
 
-学習データ $\mathcal{D} = \{(\boldsymbol{x}_i, y_i)\}_{i=1}^n$ が与えられたとき、 
+学習データ $\mathcal{D} = \{(\boldsymbol{x}_i, y_i)\}_{i=1}^n$ があるので、
 
-損失関数
-$$
-L(\boldsymbol{w}; \mathcal{D})
-$$
-
-をなるべく小さくする $\boldsymbol{w}$ を求めよ
+パラメータ $\boldsymbol{w}$ を変化させて 損失関数 $L(\boldsymbol{w}; \mathcal{D})$ をなるべく小さくせよ
 
 </div>
 
+<div style="text-align: center;">
+
+⇩
+
+</div>
 勾配降下法で解くには...
-<div class="red"> 
 
-$\nabla L$ を使って
+<div class="thm">
 
-</div> 
+**$\nabla L$ を使って $\boldsymbol{w}$ を更新して小さい値を探索していく**
 
-$\boldsymbol{w}$ を更新していけば良い
+
+</div>
+
+
+---
+
+
+<!-- _header: 勾配の計算法を考える -->
+
+<div class="section"> 1.3 勾配降下法と機械学習 </div>
+
+
+
+<br>
+<br>
+
+
+<div class="def">
+
+
+学習データ $\mathcal{D} = \{(\boldsymbol{x}_i, y_i)\}_{i=1}^n$ があるので、
+
+パラメータ $\boldsymbol{w}$ を変化させて 損失関数 $L(\boldsymbol{w}; \mathcal{D})$ をなるべく小さくせよ
+
+</div>
+
+<div style="text-align: center;">
+
+⇩
+
+</div>
+勾配降下法で解くには...
+
+<div class="thm">
+
+**$\color{red}{\nabla L}(\boldsymbol{w})$ の値を使って $\boldsymbol{w}$ を更新して小さい値を探索していく** 
+
+
+</div>
+
+
+## ... $\nabla L(\boldsymbol{w})$ をどうやって計算する？
 
 
 ---
@@ -322,7 +446,15 @@ L(\boldsymbol{w}; \boldsymbol{x}, y) \\
 $$
 
 
-:innocent: :innocent: :innocent:
+<div style="text-align: center;">
+
+⇩
+
+## とてもつらい.
+
+
+</div>
+
 
 
 
