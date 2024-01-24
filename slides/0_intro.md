@@ -183,6 +183,19 @@ one of 深層学習の基盤
 </div>  
 
 
+---
+
+
+<!-- _header: ⚠️ 注意 -->
+
+<div class="section"> Introduction </div>
+
+ちょくちょく独自研究が含まれます. 
+なるべく正確になるよう頑張っていますが,  
+誤りがあったらご指摘いただけるとありがたいです.
+
+連絡先: https://twitter.com/abap34, abap0002@gmail.com
+
 
 
 ---
