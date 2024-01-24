@@ -28,16 +28,6 @@ end
 
 ---
 
-
-
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
-
-<!-- _header: 数式微分のアイデア -->
-
-![](../img/symbolic_algo.png)
-
----
-
 <!-- _header: 数式微分のアイデア -->
 
 <!-- <div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>  -->
@@ -67,7 +57,22 @@ $\Large{2x^2 + 3x + 1}  \Rightarrow$
 
 ![center](../img/symbolic_algo_simple.png)
 
+
 ---
+
+
+
+<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<!-- _header: 数式微分のアイデア -->
+
+![](../img/symbolic_algo.png)
+
+
+---
+
+
+
 
 
 <!-- _header: `Expr` 型 -->
@@ -153,7 +158,7 @@ end
 <div class="cite">
 
 ※ Juliaは `2 * x * x` のような式を、 `(2 * x) * x` でなく `*(2, x, x)` として表現するのでこのような式については上は正しい結果を返しません. (スペースが足りませんでした)
-このあたりもちゃんとやるやつは付録のソースコードを見てください. 
+このあたりもちゃんとやるやつは付録のソースコードを見てください. 基本的には二項演算の合成とみて順にやっていくだけで良いです。 
 
 ---
 
@@ -161,6 +166,8 @@ end
 <!-- _header: 数式微分の実装 -->
 
 <div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+例) $f(x) = x^2 + 3$ の導関数 $f'(x) = 2x$ を求めて $x = 2, 10$ での微分係数を計算
 
 ```julia
 julia> f = :(x * x + 3)
@@ -202,18 +209,43 @@ julia> x = 10; eval(df)
   code {
     font-size: 0.8em;  
   }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 0.9em;
+  }
+
+    .container > .left {
+      width: 40%;
+    }
+
+    .container > .right {
+      width: 60%;
+    }
+
+
 </style>
 
 <!-- _header: 簡約化  -->
-
-
-
 <div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
 
-自明な式の簡約を行ってみる.
+<br>
 
-- 足し算の引数から `0` を取り除く.
 
+<div class="container">
+<div class="left">
+    
+    
+### 自明な式の簡約を行ってみる
+
+- 足し算の引数から `0` を除く.
+- 掛け算の引数から `1` を除く.
+
+</div>
+
+<div class="right">
 
 ```julia
 function add(args)
@@ -228,6 +260,10 @@ function add(args)
 end
 ```
 
+</div>
+
+
+
 ---
 
 
@@ -235,7 +271,23 @@ end
 
 <div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
 
+
+<div class="columns">
+
+
+<div>
+
+<br>
+<br>
+<br>
+
 - 掛け算の引数から `1` を取り除く.
+
+
+</div>
+
+
+<div>
 
 ```julia
 function mul(args)
@@ -249,6 +301,13 @@ function mul(args)
     end
 end
 ```
+
+
+</div>
+
+
+</div>
+
 
 ---
 
@@ -293,59 +352,58 @@ end
 ✅　簡単な式を得られた
 
 ```julia
-julia> derivative3(:(x * x + 3))
+julia> derivative(:(x * x + 3))
 :(x + x)
 ```
 
----
+⇨ ではこれでうまくいく？
 
-<!-- _header: 式の膨張 ? -->
+```julia
+julia> derivative(:((1 + x)  / (2 * x^2)))
+:((2 * x ^ 2 - (1 + x) * (2 * (2x))) / (2 * x ^ 2) ^ 2)
+```
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+<br>
 
-
-
----
-
-<!-- _header: ⚠️ 数式微分の注意点？  -->
-
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
-
-
-
-
+$= \dfrac{\left(2 \cdot x^{2} - \left(1 + x\right) \cdot 2 \cdot 2 \cdot x\right)}{\left(2 \cdot x^{2}\right)^{2}} \color{gray}{\ = -\dfrac{x + 2}{2x^3}}$
 
 ---
 
-<!-- _header: ⚠️ 数式微分の注意点？  -->
-
+<!-- _header: 式からアルゴリズムへ -->
 
 <div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
 
+**✅ 数式は、全然構文がないプログラム**
 
-数式微分の <span class="dot-text">**不用意な実装**</span> は導関数の式が爆発してまう 
+- 代入がない
+- `if` 文もない
+- `for` 文もない
+...
+
+⇨ では例えば 代入を許したらどうか？
 
 
-<div class="thm">
+<div class="cite">
 
-$\dfrac{d}{dx} (f(x) \cdot g(x)) = f'(x) \cdot g(x) + f(x) \cdot g'(x)$
+ヒューリスティックにやってそれなりに簡単な式を得られれば実用的には大丈夫なので与太話になりますが、簡約化を頑張れば最もシンプルな式を得られるか考えてみます。
+簡単さの定義にもよるかもしれませんが、$\forall x$ で $f(x) = 0$ な $f$ は $f(x) = 0$ と簡約化されるべきでしょう。
+ところが、$f$ が四則演算と $exp, sin, abs$ と有理数, $\pi, \ln{2}$ で作れる式のとき、$\forall x, f(x) = 0$ か判定する問題は決定不能であることが知られています。([Richardson's theorem](https://en.wikipedia.org/wiki/Richardson%27s_theorem))
+**したがって、一般の式を入力として、最も簡単な式を出力するようなアルゴリズムは存在しないとわかります。** 
 
 </div>
 
-... 項が二つに **「分裂」** するので、再帰的に微分していくと項が爆発的に増える.
-
 
 ---
 
-<!-- _header: ⚠️ 数式微分の注意点？  -->
+
+
+<!-- _header: 式からアルゴリズムへ -->
 
 <div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
 
-
-<span class="dot-text">**不用意な実装**</span> では確かにうまく行かなさそう.
-
+`:((2 * x ^ 2 - (1 + x) * (2 * (2x))) / (2 * x ^ 2) ^ 2)` ... = 
 
 
 
 
-
+---
