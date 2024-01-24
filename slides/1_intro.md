@@ -237,7 +237,59 @@ $-\nabla f(x, y)$ の方向にちょっとづつ点を動かしていけば関�
 
 **✅ $\large{f}$ が微分可能でさえあればいつもある程度小さい値を探しに行ける強力な手法！**
 
+---
 
+<!-- _header: 勾配降下法 -->
+
+
+$f(x, y) = x^2 + y^2$
+
+の勾配降下法による最小値の探索
+
+
+![bg right h:600](../img/gd-3d-sphere.gif)
+
+
+
+---
+
+<!-- _header: 勾配降下法 -->
+
+<style scoped>
+  p {
+    font-size: 0.8em;
+  }
+</style>
+
+<br>
+
+
+
+$$
+\begin{split}
+f(x, y) = & \left( 1 - \frac{1}{1 + 0.05 \cdot x^{2} + \left( y - 10 \right)^{2}} \right. \\
+& - \frac{1}{1 + 0.05 \cdot \left( x - 10 \right)^{2} + y^{2}} \\
+& - \frac{1.5}{1 + 0.03 \cdot \left( x + 10 \right)^{2} + y^{2}} \\
+& - \frac{2}{1 + 0.05 \cdot \left( x - 5 \right)^{2} + \left( y + 10 \right)^{2}} \\
+& - \left. \frac{1}{1 + 0.1 \cdot \left( x + 5 \right)^{2} + \left( y + 10 \right)^{2}} \right) \\
+& \cdot \left( 1 + 0.0001 \cdot \left( x^{2} + y^{2} \right)^{1.2} \right)
+\end{split}
+$$
+
+
+の勾配降下法による最小値の探索.
+
+<div class="cite">
+
+元ネタ: Ilya Pavlyukevich, "Levy flights, non-local search and simulated annealing", Journal of Computational Physics 226 (2007) 1830-1844. 
+
+</div>
+
+<!-- Five-Well Potential 関数 -->
+
+
+
+![bg right](../img/gd-3d-pf.gif)
 
 
 ---
