@@ -365,23 +365,87 @@ julia> derivative(:((1 + x)  / (2 * x^2)))
 
 <br>
 
-$= \dfrac{\left(2 \cdot x^{2} - \left(1 + x\right) \cdot 2 \cdot 2 \cdot x\right)}{\left(2 \cdot x^{2}\right)^{2}} \color{gray}{\ = -\dfrac{x + 2}{2x^3}}$
+$= \dfrac{\left(2 \cdot x^{2} - \left(1 + x\right) \cdot 2 \cdot 2 \cdot x\right)}{\left(2 \cdot x^{2}\right)^{2}} \color{gray}{\ = -\dfrac{x + 2}{2x^3}}$ 🧐🧐🧐
+
+
+
 
 ---
 
-<!-- _header: 式からアルゴリズムへ -->
+<!-- _header: 式の表現法を考える -->
+
+
+```julia
+julia> t1 = :(x * x)
+julia> t2 = :($t1 * $t1)
+julia> f = :($t2 * $t2)
+:(((x * x) * (x * x)) * ((x * x) * (x * x)))
+```
+
+
+という $f$ は、木で表現すると...
+
+
+![bg right h:300](../img/naive-tree-expr.svg)
+
+---
+
+<!-- _header: 式の表現法を考える -->
 
 <div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
 
-**✅ 数式は、全然構文がないプログラム**
+:question: 単純な関数が、なぜこんなに複雑になってしまったのか？
 
-- 代入がない
-- `if` 文もない
-- `for` 文もない
-...
+⇨ (木構造で表す) 式には、**束縛がない** ので、共通のものを参照できない.
 
-⇨ では例えば 代入を許したらどうか？
 
+---
+
+<!-- _header: 式からアルゴリズムへ、木からDAGへ-->
+
+<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+
+<div style="text-align: center;">
+
+✅ 式は束縛がないとても制限されたプログラム.
+
+
+⇩
+
+これを許したらどうなる？
+
+</div>
+
+
+---
+
+
+<!-- _header: 式からアルゴリズムへ、木からDAGへ-->
+
+<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+
+$$
+f(x) = x \cdot x \cdot x \cdot x \cdot x \cdot x \cdot x \cdot x
+$$
+
+<div style="text-align: center;">
+
+⇩
+
+</div>
+
+$$
+\begin{aligned}
+t_1 &= x \cdot x \\
+t_2 &= t_1 \cdot t_1 \\
+y &= t_2 \cdot t_2 \\
+\end{aligned}
+$$
+
+
+これの表現は？ ⇨ 自動微分へ
 
 <div class="cite">
 
@@ -391,19 +455,5 @@ $= \dfrac{\left(2 \cdot x^{2} - \left(1 + x\right) \cdot 2 \cdot 2 \cdot x\right
 **したがって、一般の式を入力として、最も簡単な式を出力するようなアルゴリズムは存在しないとわかります。** 
 
 </div>
-
-
----
-
-
-
-<!-- _header: 式からアルゴリズムへ -->
-
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
-
-`:((2 * x ^ 2 - (1 + x) * (2 * (2x))) / (2 * x ^ 2) ^ 2)` ... = 
-
-
-
 
 ---
