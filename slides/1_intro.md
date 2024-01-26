@@ -485,3 +485,91 @@ $$
 ## ✅ 計算機に自動で微分させよう！
 
 ---
+
+<!-- _header: 全体の流れ -->
+
+<div class="section"> Introduction </div>
+
+<br>
+
+
+**1. 微分を求めることでなにが嬉しくなるのか, なぜ今自動微分が必要なのか理解する**
+
+<div class="gray">
+
+<div style="text-align: center;">
+
+⇩
+
+</div>
+
+1. 「計算機上で自動で微分を求める」というのはどういうことかを理解する
+
+<div style="text-align: center;">
+
+⇩
+
+</div>
+
+
+3. いろいろな微分をする手法のメリット・デメリットを理解する
+
+<div style="text-align: center;">
+
+⇩
+
+</div>
+
+4. Julia でそれぞれを利用 / 拡張する方法を理解する
+   
+</div>
+
+
+---
+
+
+<!-- _header: 全体の流れ -->
+
+<div class="section"> Introduction </div>
+
+<br>
+
+
+<div class="gray">
+
+1. 微分を求めることでなにが嬉しくなるのか, なぜ今自動微分が必要なのか理解する
+
+</div>
+
+<div style="text-align: center;">
+
+⇩
+
+</div>
+
+**2. 「計算機上で自動で微分を求める」というのはどういうことかを理解する**
+
+<div class="gray">
+
+<div style="text-align: center;">
+
+⇩
+
+</div>
+
+
+3. いろいろな微分をする手法のメリット・デメリットを理解する
+
+<div style="text-align: center;">
+
+⇩
+
+</div>
+
+4. Julia でそれぞれを利用 / 拡張する方法を理解する
+   
+</div>
+
+</div>
+
+---
