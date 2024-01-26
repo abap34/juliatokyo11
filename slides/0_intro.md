@@ -11,16 +11,17 @@ theme: honwaka
 
 ## @abap34
 東工大 情報理工学院 情報工学系 B2 
-(もうすぐ消滅)
+ 
 **趣味**
 - :robot: 機械学習
 - :gear: 個人開発
 - :baseball: 野球をする/みる
+- 🍗 大岡山の焼き鳥屋に行く
 
 GitHub: @abap34
 Twitter: @abap34
 
-![bg right h:400](../img/abap34.png)
+![bg right h:320](../img/abap34.png)
 
 
 ---
@@ -65,7 +66,7 @@ Twitter: @abap34
 
 <div class="section"> Introduction </div>
 
-![h:200](../img/anim.gif)  ![h:200](../img/report1.png)  ![h:200](../img/train_drop.gif)  ![h:200](../img/report2.png) ![h:200](../img/basic-norsurface.gif)  ![h:250](../img/fitting_history.gif) ![h:200](../img/gd1.gif)
+![h:200](../img/anim.gif)  ![h:200](../img/report1.png)  ![h:200](../img/train_drop.gif)  ![h:200](../img/report2.png) ![h:200](../img/basic-norsurface.gif)  ![h:250](../img/fitting_history.gif) ![h:200](../img/sort.png)
 
 ---
 
@@ -129,7 +130,7 @@ one of 深層学習の基盤
 
 # **自動微分** 
 
-![bg right:63% h:450](../img/plt1.png)
+![bg right:63% h:450](../img/tangent.gif)
 
 
 
@@ -148,54 +149,6 @@ one of 深層学習の基盤
 3. 自分の計算ルーチンに微分の計算を組み込みたいけどやり方がわからない
 4. え、自動微分ってただ計算するだけじゃないの？何がおもしろいの？
 
----
-
-<!-- _header: 今日話すこと -->
-
-<div class="section"> Introduction </div>
-
-<br>
-
-<br>
-
-
-<div class="proof">
-
-**[メインテーマ]**
-
-- 自動で微分を求めることのモチベーション
-- 自動で微分を求めるアルゴリズムたちの紹介と実装
-- 一般的な自動微分の実装
-- 自動微分の先進的な研究 (Julia まわりを中心に)
-- 微分ライブラリの紹介
-
-
-
-</div>
-
-
-<div style="font-size: 0.8em;">
-
-こんなワードが出てきます :  
-勾配降下法, 数値微分, 数式微分, 自動微分, 誤差評価, 深層学習フレームワーク, Define and/by Run
-計算グラフ, Wengert List, Source Code Transformation(SCT), SSA形式
-
-</div>  
-
-
----
-
-
-<!-- _header: ⚠️ 注意 -->
-
-<div class="section"> Introduction </div>
-
-ちょくちょく独自研究が含まれます. 
-なるべく正確になるよう頑張っていますが,  
-誤りがあったらご指摘いただけるとありがたいです.
-
-連絡先: https://twitter.com/abap34, abap0002@gmail.com
-
 
 
 ---
@@ -205,6 +158,9 @@ one of 深層学習の基盤
 <div class="section"> Introduction </div>
 
 <br>
+
+<br>
+
 
 <div class="columns">
 
@@ -216,9 +172,10 @@ one of 深層学習の基盤
 1.3 勾配降下法と機械学習
 
 ### [2] 自動で微分
-2.1 微分の近似─数値微分 
-2.2 誤差なしの微分 ─数式微分
-2.3 式の微分からアルゴリズムの微分へ 
+2.1 自動微分の枠組み
+2.1 数値微分 ─近似計算と誤差
+2.2 数式微分 ─式の表現と微分と連鎖律
+2.3 自動微分 ─式からアルゴリズムへ 
 2.4 自動微分とトレース
 2.5 自動微分とソースコード変換
 
@@ -238,12 +195,108 @@ one of 深層学習の基盤
 4.1 ChainRules
 
 ### [5] まとめ 
-### [6] 参考になる文献
+### [6] 参考になる文献 
 
 
 
 </div>
 
+</div>
+
+
+---
+
+<!-- _header: 全体の流れ -->
+
+<div class="section"> Introduction </div>
+
+<br>
+
+
+1. 微分を求めることでなにが嬉しくなるのか, なぜ今自動微分が必要なのか理解する
+
+   <div style="text-align: center;">
+   
+   ⇩
+   
+   </div>
+
+2. 「計算機上で自動で微分を求める」というのはどういうことかを理解する
+
+   <div style="text-align: center;">
+   
+   ⇩
+   
+   </div>
+
+
+3. いろいろな微分をする手法のメリット・デメリットを理解する
+    
+      <div style="text-align: center;">
+      
+      ⇩
+      
+      </div>
+
+4. Julia でそれぞれを利用 / 拡張する方法を理解する
+   
+
+
+---
+
+
+<!-- _header: ⚠️ 注意 -->
+
+<div class="section"> Introduction </div>
+
+ちょくちょく独自研究が含まれます. 
+なるべく正確になるよう頑張っていますが,  
+誤りがあったらご指摘いただけるとありがたいです. 🙇‍♂️🙇‍♂️🙇‍♂️
+
+連絡先: https://twitter.com/abap34, abap0002@gmail.com
+
+
+---
+
+
+
+
+<!-- _header: 全体の流れ -->
+
+<div class="section"> Introduction </div>
+
+<br>
+
+
+**1. 微分を求めることでなにが嬉しくなるのか, なぜ今自動微分が必要なのか理解する**
+
+<div class="gray">
+
+<div style="text-align: center;">
+
+⇩
+
+</div>
+
+2. 「計算機上で自動で微分を求める」というのはどういうことかを理解する
+
+<div style="text-align: center;">
+
+⇩
+
+</div>
+
+
+3. いろいろな微分をする手法のメリット・デメリットを理解する
+
+<div style="text-align: center;">
+
+⇩
+
+</div>
+
+4. Julia でそれぞれを利用 / 拡張する方法を理解する
+   
 </div>
 
 
