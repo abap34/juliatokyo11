@@ -12,11 +12,18 @@ $$
 
 <!-- _class: lead -->
 
-# Juliaと歩く
-# 自動微分の世界
+<br>
+<br>
+<br>
+
+# **Julia**と歩く
+# **自動微分**
 ## Julia Tokyo #11
 
-@abap34
+@abap34　
 2023/02/03
+![h:50](../img/abap34.png)
+
+![bg blur](../img/surface.gif)
 
 ---
