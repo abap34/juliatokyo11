@@ -103,8 +103,12 @@ $$
 
 <div class="section"> 1.1 微分のおさらい </div>    
 
+<div class="thm">
+
 ### ✅　勾配ベクトルの重要ポイント
 ##  $- \nabla f(\boldsymbol{x})$ は $\boldsymbol{x}$ における $f$ の値がもっとも小さくなる方向を指す
+
+</div>
 
 ---
 
@@ -297,13 +301,13 @@ $$
 
 <div class="section"> 1.3 勾配降下法と機械学習 </div>
 
-### 機械学習の典型的な問題設定:
+### 機械学習で解きたくなる問題
 
 <div class="def">
 
-学習データ $\mathcal{D} = \{(\boldsymbol{x}_i, y_i)\}_{i=1}^n$ があるので、
+データ $\mathcal{D} = \{(\boldsymbol{x}_i, y_i)\}_{i=1}^n$ があるので、
 
-パラメータ $\boldsymbol{w}$ を変化させて 損失関数 $L(\mathcal{D}; \boldsymbol{w})$ をなるべく小さくせよ
+パラメータ $\boldsymbol{\theta}$ を変化させて 損失 $L(\mathcal{D}; \boldsymbol{\theta})$ をなるべく小さくせよ
 
 </div>
 
@@ -311,10 +315,13 @@ $$
 
 ⇩
 
+
+
+関数の小さい値を探しに行く問題 
+$\leftrightarrow$ **勾配降下法チャンス！**
+
+
 </div>
-
-
-関数の最小値を探索する問題 ... 勾配降下法がいけそう！
 
 
 ---
@@ -373,9 +380,9 @@ $$
 
 <div class="def">
 
-学習データ $\mathcal{D} = \{(\boldsymbol{x}_i, y_i)\}_{i=1}^n$ があるので、
+データ $\mathcal{D} = \{(\boldsymbol{x}_i, y_i)\}_{i=1}^n$ があるので、
 
-パラメータ $\boldsymbol{w}$ を変化させて 損失関数 $L(\mathcal{D}; \boldsymbol{w})$ をなるべく小さくせよ
+パラメータ $\boldsymbol{\theta}$ を変化させて 損失 $L(\mathcal{D}; \boldsymbol{\theta})$ をなるべく小さくせよ
 
 </div>
 
@@ -386,9 +393,9 @@ $$
 </div>
 勾配降下法で解くには...
 
-<div class="thm">
+<div class="proof">
 
-**$\nabla L$ を使って $\boldsymbol{w}$ を更新して小さい値を探索していく**
+**$\nabla L$ を使って $\boldsymbol{\theta}$ を更新して小さい値を探索していく**
 
 
 </div>
@@ -410,9 +417,9 @@ $$
 <div class="def">
 
 
-学習データ $\mathcal{D} = \{(\boldsymbol{x}_i, y_i)\}_{i=1}^n$ があるので、
+データ $\mathcal{D} = \{(\boldsymbol{x}_i, y_i)\}_{i=1}^n$ があるので、
 
-パラメータ $\boldsymbol{w}$ を変化させて 損失関数 $L(\mathcal{D}; \boldsymbol{w})$ をなるべく小さくせよ
+パラメータ $\boldsymbol{\theta}$ を変化させて 損失 $L(\mathcal{D}; \boldsymbol{\theta})$ をなるべく小さくせよ
 
 </div>
 
@@ -423,15 +430,15 @@ $$
 </div>
 勾配降下法で解くには...
 
-<div class="thm">
+<div class="proof">
 
-**$\color{red}{\nabla L}(\boldsymbol{w})$ の値を使って $\boldsymbol{w}$ を更新して小さい値を探索していく** 
+**$\color{red}{\nabla L}(\boldsymbol{\theta})$ の値を使って $\boldsymbol{\theta}$ を更新して小さい値を探索していく** 
 
 
 </div>
 
 
-## ... $\nabla L(\boldsymbol{w})$ をどうやって計算する？
+## ... $\nabla L(\boldsymbol{\theta})$ をどうやって計算する？
 
 
 ---
@@ -444,12 +451,12 @@ $$
 ### 深層学習の複雑なモデル...
 
 $$ 
-L(\boldsymbol{w}; \boldsymbol{x}, y) \\
-= \text{\Large{V}\small{e}\large{r}\LARGE{y}\LARGE{c}\Large{o}\small{m}\large{p}\LARGE{l}\small{i}\large{c}\LARGE{a}\small{t}\large{e}\large{d}\LARGE{f}} \left(\boldsymbol{w}; \boldsymbol{x}, y \right)
+L(\boldsymbol{\theta}; \boldsymbol{x}, y) \\
+= \text{\Large{V}\small{e}\large{r}\LARGE{y}\LARGE{c}\Large{o}\small{m}\large{p}\LARGE{l}\small{i}\large{c}\LARGE{a}\small{t}\large{e}\large{d}\LARGE{f}} \left(\boldsymbol{\theta}; \boldsymbol{x}, y \right)
 $$
 
 
-<div style="text-align: center;">
+<div style="text-align: center;">　
 
 ⇩
 
@@ -468,21 +475,148 @@ $$
 画像: He, K., Zhang, X., Ren, S., & Sun, J. (2015). Deep Residual Learning for Image Recognition. ArXiv. /abs/1512.03385
 </div>
 
+---
 
+
+<!-- _header: 勾配の計算法を考える ~近似編 -->
+
+<div class="section"> 1.3 勾配降下法と機械学習 </div>
+
+<div class="columns">
+
+<div>
+
+
+アイデア1. 近似によって求める？
+
+$\displaystyle f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$
+
+
+⇨ 実際に小さい $h$ をとって計算する. 
+
+
+</div>
+
+<div>
+
+```julia
+function diff(f, x; h=1e-8)
+    return (f(x + h) - f(x)) / h
+end
+```
+
+
+
+</div>  
+
+
+</div>
+
+---
+
+
+<!-- _header: 勾配の計算法を考える ~近似編 -->
+
+<div class="section"> 1.3 勾配降下法と機械学習 </div>
+
+これでもそれなりに近い値を得られる.
+
+例) $f(x) = x^2$ の $x=2$ における微分係数 $4$ を求める.
+
+```julia
+julia> function diff(f, x; h=1e-8)
+           return (f(x + h) - f(x)) / h
+       end
+diff (generic function with 1 method)
+
+julia> diff(x -> x^2, 2)   # おしい！
+3.999999975690116 
+```
+
+---
+
+<!-- _header: 数値微分 -->
+
+
+#### 実際に小さい $h$ をとって計算
+## **「数値微分」**
+
+
+お手軽だが...
+
+- 誤差が出る
+- 勾配ベクトルの計算が非効率
+
+![bg right h:450](../img/numerical_example.png)
+
+
+---
+
+<!-- _header: 数値微分 -->
+
+<div class="section"> 1.3 勾配降下法と機械学習 </div>
+
+
+<div class="columns">
+
+
+
+<div>
+
+#### 問題点①. 誤差が出る 
+1. 本来極限をとるのに、小さい $h$ を
+とって計算しているので誤差が出る
+
+2. 分子が極めて近い値同士の引き算に
+なっていて、$\left( \frac{\color{red}{f(x+h) - f(x)}}{h} \right)$
+桁落ちによって精度が大幅に悪化.
+
+
+
+</div>
+
+<div>
+
+#### 問題点②. 勾配ベクトルの計算が非効率
+
+1. $n$ 変数関数の勾配ベクトル $\nabla f(\boldsymbol{x}) \in \mathbb{R}^n$ を計算するには、
+各 $x_i$ について「少し動かす→計算」を繰り返すので $n$回 $f$ を評価する. 
+   
+2. 応用では $n$ がとても大きくなり、 
+$f$ の評価が重くなりがちで**致命的**
+
+
+</div>
+
+</div>
+
+<div class="cite">
+これらの問題の対処法はある？年収は？誤差のオーダーは?より精度のいい近似式はある？　調べてみました！　⇨ 付録: 「数値微分」へ
+
+</div>
+
+---
+
+<!-- _header: 改良を考える -->
+
+<div class="section"> 1.3 勾配降下法と機械学習 </div>
+
+- 微分をすることによる誤差なく
+- 高次元の勾配ベクトルを効率よく計算できないか？
 
 
 ---
 
 <div class="section"> 1.3 勾配降下法と機械学習 </div>
 
-:computer: < やりますよ
-
+:computer: < できますよ
+:book: 
 
 ---
 
 <div class="section"> 1.3 勾配降下法と機械学習 </div>
 
-## ✅ 計算機に自動で微分させよう！
+## ✅ 自動微分の世界へ
 
 ---
 
@@ -493,7 +627,7 @@ $$
 <br>
 
 
-**1. 微分を求めることでなにが嬉しくなるのか, なぜ今自動微分が必要なのか理解する**
+**1. 微分を求めることでなにが嬉しくなるのか, なぜ今微分が必要なのか理解する**
 
 <div class="gray">
 
@@ -537,7 +671,7 @@ $$
 
 <div class="gray">
 
-1. 微分を求めることでなにが嬉しくなるのか, なぜ今自動微分が必要なのか理解する
+1. 微分を求めることでなにが嬉しくなるのか, なぜ今微分が必要なのか理解する
 
 </div>
 
