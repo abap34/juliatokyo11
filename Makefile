@@ -4,7 +4,7 @@ SRC_FILES = $(wildcard $(SRC_DIR)/*[0-9]_*.md)
 OUTPUT_FILE = $(BUILD_DIR)/slide.md
 MARPRC_FILE = .marprc.yml
 
-all: clean preprocess pdf html pptx
+all: clean preprocess pdf html 
 
 preprocess: $(OUTPUT_FILE)
 	@echo "Compiling slides..."
