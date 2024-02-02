@@ -24,22 +24,35 @@ theme: honwaka
 <br>
 
 
+
+---
+
+<!-- _header: 自動微分の枠組み -->
+
+<div class="section"> 2.1 自動微分の枠組み </div>
+
+**✅ 計算機上で微分するためには、計算機上で関数を表現しないといけない.**
+
+
 ---
 
 <!-- _header: 「自動微分」 -->
+
+<br>
+<br>
 
 
 <div class="section"> 2.1 自動微分の枠組み </div>
 
 <div class="def">
 
-**[定義3. 自動微分]**
+**[定義. 自動微分]**
 
-(数学的な関数を表すように定義された、) <span class="dot-text">アルゴリズム</span> を入力として、
+(数学的な関数を表すように定義された) <span class="dot-text">計算機上のアルゴリズム</span> を入力として、
 
 その関数の任意の点の微分係数を無限精度の計算モデル上で正確に計算できる 
 
-<span class="dot-text">アルゴリズム </span> を出力するアルゴリズムを 
+<span class="dot-text">計算機上のアルゴリズム</span> を出力するアルゴリズムを 
 
 「**自動微分(Auto Differentiation, Algorithmic Differentiation)**」
 
@@ -47,12 +60,26 @@ theme: honwaka
 
 </div>
 
+
+---
+
+<!-- _header: 自動微分の枠組み -->
+
+
+![bg right h:500](../img/autodiff_intro.png)
+
+計算機は、
+- 計算機上の表現をもらって
+- 計算機上の表現を返す.
+
+
 ---
 
 <!-- _header: 自動微分 -->
 
 
-![bg h:500](../img/autodiff_framework_simple.png)
+
+![bg h:460](../img/autodiff_framework_simple.png)
 
 ---
 
@@ -147,13 +174,14 @@ df(3.0) # 6.0
 ## どうやって微分する？
 
 
-<div style="text-align: center;">
-
 ⇩
 
-</div>
+
 
 ## **自動微分の実装**へ
 
 
 ![bg right h:350](../img/autodiff_framework_simple.png)
+
+
+---
