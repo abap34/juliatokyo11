@@ -217,6 +217,9 @@ derivative(ex::Symbol) = 1
 
 <br>
 
+<br>
+
+
 3. 足し算に関する微分
 $$
 \dfrac{d}{dx} (f(x) + g(x)) = f'(x) + g'(x)
@@ -266,8 +269,6 @@ end
 <br>
 
 4. 掛け算に関する微分
-
-
 $$
 \dfrac{d}{dx} (f(x) \cdot g(x)) = f'(x) \cdot g(x) + f(x) \cdot g'(x)
 $$
@@ -654,7 +655,7 @@ $
 
 <br>
 
-
+<br>
 
 **[需要]**
 
@@ -662,7 +663,6 @@ $
 一般的なプログラミング言語によって
 記述されたアルゴリズムに対しても、
 微分したい
-
 
 
 </div>
@@ -682,6 +682,10 @@ function linear_regression_error(coef)
     return error
 end
 ```
+
+$$
+f(x) = (2 - x)^2 + (4 - 2x)^2 + (6 - 3x)^2
+$$
 
 
 </div>
