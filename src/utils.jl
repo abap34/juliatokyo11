@@ -3,6 +3,12 @@ using FileIO
 using ImageInTerminal
 using OhMyREPL
 
+
+function id_generator(; init=100000)
+    id = init
+    return () -> (id += 1)
+end
+
 struct Node
     id::Int
     label::String
@@ -12,11 +18,6 @@ struct Edge
     label::String
     source::Node
     target::Node
-end
-
-function id_generator()
-    id = 0
-    return () -> (id += 1)
 end
 
 struct Graph
@@ -267,3 +268,29 @@ macro derivative(ex)
     return derivative(ex)
 end
 
+
+
+# 参考にした実装: https://github.com/MikeInnes/diff-zoo/blob/master/src/utils.jl
+# 元実装と違い、共通部分式を共有するようにしています (代入ありだと小さくなることを示すデモ用なので)
+function to_wengert(ex::Int64, cashe, n, wlist, top)
+    return ex
+end
+
+function to_wengert(ex::Symbol, cashe, n, wlist, top)
+    return ex
+end
+
+function to_wengert(ex::Expr, cashe=Dict{Expr, Symbol}(), n=Ref(0), wlist=[], top=true)
+    if haskey(cashe, ex) 
+        return cashe[ex]    
+    end
+    args = map(x -> to_wengert(x, cashe, n, wlist, false), ex.args)
+    sym = Symbol(:y, "_{", n[] += 1, "}")
+    push!(wlist, (sym => Expr(ex.head, args...)))
+    cashe[ex] = sym
+    if top
+        return wlist
+    else
+        return sym
+    end
+end
