@@ -6,7 +6,7 @@ theme: honwaka
 ---
 
 
-# **2.2 誤差なしの微分 ─数式微分**
+# **2.2 数式微分 ─式の表現と微分**
 
 <br>
 
@@ -17,23 +17,41 @@ function symbolic_derivative(f::Function)::Function
 end
 ```
 
+---
+
+<!-- _header: 数式微分 -->
+
+
+<div class="def">
+
+**[定義. 自動微分]**
+
+(数学的な関数を表すように定義された) <span class="dot-text">計算機上のアルゴリズム</span> を入力とし,
+
+その関数の任意の点の微分係数を無限精度の計算モデル上で正確に計算できる 
+
+<span class="dot-text">計算機上のアルゴリズム</span> を出力するアルゴリズムを 
+
+「**自動微分(Auto Differentiation, Algorithmic Differentiation)**」
+
+と呼ぶ。
+
+</div>
 
 ---
 
-<!-- _header: 数式微分のモチベーション -->
+<!-- _header: 数式微分 -->
 
-### 数値微分で発生していた打ち切り誤差を発生させずに微分の操作を行いたい. 
-
+<span class="dot-text">アルゴリズム</span>　を計算機上でどう表現するか？
 
 
 ---
+
 
 <!-- _header: 数式微分のアイデア -->
 
-<!-- <div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>  -->
-
-✅ 式は木構造として
-計算機上で表現できる.
+単純・解析しやすい表現 
+... 式をそのまま木で表す
 
 <br>
 
@@ -120,15 +138,169 @@ Expr
 
 <div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
 
-微分の公式を実装していけばよい.
+<div class="columns">
 
-例) 足し算と掛け算のルール
+<div>
 
-1. $\dfrac{d}{dx} (f(x) + g(x)) = f'(x) + g'(x)$
-   
-   
-2. $\dfrac{d}{dx} (f(x) \cdot g(x)) = f'(x) \cdot g(x) + f(x) \cdot g'(x)$
-   
+
+
+1. 定数を微分できるようにする
+$$
+\dfrac{d}{dx} (c) = 0
+$$    
+
+</div>
+
+<div>
+
+
+
+```julia
+julia> derivative(ex::Int64) = 0
+```
+
+</div>
+
+
+
+</div>
+
+
+---
+
+
+<!-- _header: 数式微分の実装 -->
+
+
+<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="columns">
+
+<div>
+
+
+
+2. $x$ についての微分は $1$
+$$
+\dfrac{d}{dx} (x) = 1
+$$    
+
+</div>
+
+<div>
+
+
+
+```julia
+derivative(ex::Symbol) = 1
+```
+
+</div>
+
+
+
+</div>
+
+---
+
+
+<!-- _header: 数式微分の実装 -->
+
+
+<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="columns">
+
+<div>
+
+<br>
+
+<br>
+
+3. 足し算に関する微分
+$$
+\dfrac{d}{dx} (f(x) + g(x)) = f'(x) + g'(x)
+$$    
+
+</div>
+
+<div>
+
+
+```julia
+function derivative(ex::Expr)::Expr
+    op = ex.args[1]
+    if op == :+     
+        return Expr(
+            :call, 
+            :+, 
+            derivative(ex.args[2]), 
+            derivative(ex.args[3])
+        ) 
+    end
+end
+```
+
+</div>
+
+
+
+</div>
+
+
+---
+
+
+
+<!-- _header: 数式微分の実装 -->
+
+
+<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="columns">
+
+<div>
+
+<br>
+
+<br>
+
+4. 掛け算に関する微分
+
+
+$$
+\dfrac{d}{dx} (f(x) \cdot g(x)) = f'(x) \cdot g(x) + f(x) \cdot g'(x)
+$$
+
+
+</div>
+
+<div>
+
+
+```julia
+function derivative(ex::Expr)::Expr
+    op = ex.args[1]
+    if op == :+     
+       ...
+    elseif op == :*
+        return Expr(
+            :call,
+            :+,
+            Expr(:call, :*, ex.args[2], derivative(ex.args[3])),
+            Expr(:call, :*, derivative(ex.args[2]), ex.args[3])
+        )
+    end
+end
+```
+
+</div>
+
+
+
+</div>
+
+
 ---
 
 <!-- _header: 数式微分の実装 -->
@@ -194,13 +366,8 @@ julia> x = 10; eval(df)
 `df = ((x * 1 + 1x) + 0)` ... `2x` にはなっているが冗長？
 
 
-<!-- <div class="cite">
-
-[1] よく数式微分の固有・不可避っぽい問題だ、みたいな文脈で語られるのですが、数値微分自体の問題ではないという指摘もあります。僕もそう思います。
-参考: Laue, S. (2019). On the Equivalence of Automatic and Symbolic Differentiation. ArXiv. /abs/1904.02990
 
 
-</div> -->
 
 
 ---
@@ -237,6 +404,7 @@ julia> x = 10; eval(df)
 <div class="container">
 <div class="left">
     
+<br>
     
 ### 自明な式の簡約を行ってみる
 
@@ -249,7 +417,7 @@ julia> x = 10; eval(df)
 
 ```julia
 function add(args)
-    args = filter(x->x != 0, args)
+    args = filter(x -> x != 0, args)
     if length(args) == 0
         return 0
     elseif length(args) == 1
@@ -291,7 +459,7 @@ end
 
 ```julia
 function mul(args)
-    args = filter(x->x != 1, args)
+    args = filter(x -> x != 1, args)
     if length(args) == 0
         return 1
     elseif length(args) == 1
@@ -394,9 +562,82 @@ julia> f = :($t2 * $t2)
 
 <div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
 
-:question: 単純な関数が、なぜこんなに複雑になってしまったのか？
 
-⇨ (木構造で表す) 式には、**束縛がない** ので、共通のものを参照できない.
+
+```julia
+julia> t1 = :(x * x)
+julia> t2 = :($t1 * $t1)
+julia> f = :($t2 * $t2)
+:(((x * x) * (x * x)) * ((x * x) * (x * x)))
+```
+
+
+:question: 作るときは単純な関数が、なぜこんなに複雑になってしまったのか？
+
+⇨ (木構造で表す) 式には、**代入・束縛がない** ので、共通のものを参照できない.
+
+⇨ **アルゴリズムを記述する言語として、数式(木構造)は貧弱** 
+
+---
+
+<!-- _header: 式の表現法を考える -->
+
+
+**❌ 数式微分は<span class="dot-text">微分すると</span>式が肥大化してうまくいかない.**
+**⭕️  木で式を表現するのがそもそもうまくいかない🙅‍♀️**
+
+
+
+
+
+<div class="cite">
+
+
+
+</div>
+
+<div class="cite">
+
+参考: Laue, S. (2019). On the Equivalence of Automatic and Symbolic Differentiation. ArXiv. /abs/1904.02990
+
+</div>
+
+
+---
+
+<!-- _header: 式の表現法を考える -->
+
+
+`:((2 * x ^ 2 - (1 + x) * (2 * (2x))) / (2 * x ^ 2) ^ 2)` 
+
+$= \dfrac{\left(2 \cdot x^{2} - \left(1 + x\right) \cdot 2 \cdot 2 \cdot x\right)}{\left(2 \cdot x^{2}\right)^{2}}$  も、
+
+
+![bg right h:400](../img/complex-df.svg)
+
+---
+
+<!-- _header: 式の表現法を考える -->
+
+<br>
+
+
+$
+\begin{split}
+y_{1} &= x^{2} \\
+y_{2} &= 2 \cdot y_{1} \\
+y_{3} &= \left(1 + x\right) \\
+y_{4} &= 2 \cdot x \\
+y_{5} &= 2 \cdot y_{4} \\
+y_{6} &= y_{3} \cdot y_{5} \\
+y_{7} &= \left(y_{2} - y_{6}\right) \\
+y_{8} &= \left(y_{2}\right)^{2} \\
+y_{9} &= \dfrac{y_{7}}{y_{8}} \\
+\end{split}
+$
+
+
+![bg right:66% h:650](../img/df-commonsub.svg)
 
 
 ---
@@ -406,16 +647,49 @@ julia> f = :($t2 * $t2)
 <div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
 
 
-<div style="text-align: center;">
+<div class="columns">
 
-✅ 式は束縛がないとても制限されたプログラム.
+<div>
 
 
-⇩
+<br>
 
-これを許したらどうなる？
+
+
+**[需要]**
+
+制御構文・関数呼び出し etc...
+一般的なプログラミング言語によって
+記述されたアルゴリズムに対しても、
+微分したい
+
+
 
 </div>
+
+<div>
+
+```julia
+x = [1, 2, 3]
+y = [2, 4, 6]
+
+function linear_regression_error(coef)
+    pred = x * coef
+    error = 0.
+    for i in eachindex(y)
+        error += (y[i] - pred[i])^2
+    end
+    return error
+end
+```
+
+
+</div>
+
+
+
+</div>
+
 
 
 ---
@@ -426,26 +700,23 @@ julia> f = :($t2 * $t2)
 <div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
 
 
-$$
-f(x) = x \cdot x \cdot x \cdot x \cdot x \cdot x \cdot x \cdot x
-$$
-
 <div style="text-align: center;">
+
+
+**木構造の式 から 木構造の式**
 
 ⇩
 
+## (ふつうの)　プログラム から プログラム　へ
+
+
+
 </div>
 
-$$
-\begin{aligned}
-t_1 &= x \cdot x \\
-t_2 &= t_1 \cdot t_1 \\
-y &= t_2 \cdot t_2 \\
-\end{aligned}
-$$
 
 
-これの表現は？ ⇨ 自動微分へ
+
+
 
 <div class="cite">
 
@@ -453,7 +724,6 @@ $$
 簡単さの定義にもよるかもしれませんが、$\forall x$ で $f(x) = 0$ な $f$ は $f(x) = 0$ と簡約化されるべきでしょう。
 ところが、$f$ が四則演算と $exp, sin, abs$ と有理数, $\pi, \ln{2}$ で作れる式のとき、$\forall x, f(x) = 0$ か判定する問題は決定不能であることが知られています。([Richardson's theorem](https://en.wikipedia.org/wiki/Richardson%27s_theorem))
 **したがって、一般の式を入力として、最も簡単な式を出力するようなアルゴリズムは存在しないとわかります。** 
-
 </div>
 
 ---
