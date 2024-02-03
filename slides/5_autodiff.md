@@ -377,7 +377,7 @@ $m > n$ の場合を考えてみる
 
 - **逆向き自動微分 (Backward-Mode AD)**
 
-  - $f: \mathbb{R}^n \to \mathbb{R}^m$ に対して、 $m > n$ の場合に効率的
+  - $f: \mathbb{R}^n \to \mathbb{R}^m$ に対して、 $m < n$ の場合に効率的
   - 勾配を一回グラフを走査するだけで計算可能
 
 - **前進型自動微分 (Forward-Mode AD)**
