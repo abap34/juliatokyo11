@@ -194,25 +194,21 @@ one of 深層学習の基盤
 1.3 勾配降下法と機械学習
 
 ### [2] 自動で微分
+2.1 自動微分の枠組み
 2.2 数式微分 ─式の表現と微分
 2.3 自動微分 ─式からアルゴリズムへ 
 2.4 自動微分とトレース
-2.5 自動微分とソースコード変換
 
 </div>
 
 
 <div>
 
-
 ### [3] Juliaに微分させる
 3.1 FiniteDiff.jl/FiniteDifferences.jl
 3.1 ForwardDiff.jl
 3.2 Zygote.jl/Diffractor.jl
 3.3 AbstractDifferentiation.jl
-
-### [4] Juliaの微分を拡張する
-4.1 ChainRules
 
 ### [5] まとめ 
 ### [6] 付録

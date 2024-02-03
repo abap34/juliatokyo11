@@ -223,11 +223,11 @@ $\nabla f(0.5, -0.5) = \left(\frac{-17}{18}, \frac{25}{36} \right) = (-0.94, 0.6
 
 $-\nabla f(x, y)$ の方向にちょっとづつ点を動かしていけば関数のそこそこ小さい値を取る点を探しに行ける
 
----
+<!-- --- -->
 
 <!-- _header: 勾配降下法 -->
 
-<div class="section"> 1.2 勾配降下法 </div>
+<!-- <div class="section"> 1.2 勾配降下法 </div>
 
 <div class="def">
 
@@ -241,7 +241,7 @@ $-\nabla f(x, y)$ の方向にちょっとづつ点を動かしていけば関�
 
 </div>
 
-**✅ $\large{\nabla f(\boldsymbol{x})}$ が計算可能でさえあればいつもある程度小さい値を探しに行ける！**
+**✅ $\large{\nabla f(\boldsymbol{x})}$ が計算可能でさえあればいつもある程度小さい値を探しに行ける！** -->
 
 ---
 
@@ -623,7 +623,7 @@ $f$ の評価が重くなりがちで **致命的**
 
 <!-- _header: 全体の流れ -->
 
-<div class="section"> Introduction </div>
+<div class="section"> 1.3 勾配降下法と機械学習 </div>
 
 <br>
 
@@ -657,7 +657,7 @@ $f$ の評価が重くなりがちで **致命的**
 
 <!-- _header: 全体の流れ -->
 
-<div class="section"> Introduction </div>
+<div class="section"> 1.3 勾配降下法と機械学習 </div>
 
 <br>
 

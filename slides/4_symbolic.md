@@ -21,6 +21,7 @@ end
 
 <!-- _header: 数式微分 -->
 
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
 
 <div class="def">
 
@@ -42,6 +43,9 @@ end
 
 <!-- _header: 数式微分 -->
 
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
+
 <span class="dot-text">アルゴリズム</span>　を計算機上でどう表現するか？
 
 
@@ -49,6 +53,7 @@ end
 
 
 <!-- _header: 数式微分のアイデア -->
+
 
 単純・解析しやすい表現 
 ... 式をそのまま木で表す
@@ -66,7 +71,9 @@ $\Large{2x^2 + 3x + 1}  \Rightarrow$
 
 <!-- _header: 数式微分のアイデア -->
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 <br>
 
@@ -80,7 +87,9 @@ $\Large{2x^2 + 3x + 1}  \Rightarrow$
 
 
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 <!-- _header: 数式微分のアイデア -->
 
@@ -95,7 +104,9 @@ $\Large{2x^2 + 3x + 1}  \Rightarrow$
 
 <!-- _header: `Expr` 型 -->
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 
 <br>
@@ -136,7 +147,9 @@ Expr
 
 <!-- _header: 数式微分の実装 -->
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 <div class="columns">
 
@@ -172,7 +185,9 @@ julia> derivative(ex::Int64) = 0
 <!-- _header: 数式微分の実装 -->
 
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 <div class="columns">
 
@@ -207,7 +222,9 @@ derivative(ex::Symbol) = 1
 <!-- _header: 数式微分の実装 -->
 
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 <div class="columns">
 
@@ -258,7 +275,9 @@ end
 <!-- _header: 数式微分の実装 -->
 
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 <div class="columns">
 
@@ -306,7 +325,9 @@ end
 
 <!-- _header: 数式微分の実装 -->
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 
 ```julia
@@ -338,7 +359,9 @@ end
 
 <!-- _header: 数式微分の実装 -->
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 例) $f(x) = x^2 + 3$ の導関数 $f'(x) = 2x$ を求めて $x = 2, 10$ での微分係数を計算
 
@@ -361,7 +384,9 @@ julia> x = 10; eval(df)
 
 <!-- _header: ⚠️ 数式微分の改良 ~ 複雑な表現  -->
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 
 `df = ((x * 1 + 1x) + 0)` ... `2x` にはなっているが冗長？
@@ -397,7 +422,9 @@ julia> x = 10; eval(df)
 </style>
 
 <!-- _header: 簡約化  -->
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 <br>
 
@@ -438,7 +465,9 @@ end
 
 <!-- _header: 簡約化  -->
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 
 <div class="columns">
@@ -482,7 +511,9 @@ end
 
 <!-- _header: 簡約化  -->
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 
 <br>
@@ -516,7 +547,9 @@ end
 
 <!-- _header: 簡約化  -->
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 ✅　簡単な式を得られた
 
@@ -561,7 +594,9 @@ julia> f = :($t2 * $t2)
 
 <!-- _header: 式の表現法を考える -->
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 
 
@@ -645,7 +680,9 @@ $
 
 <!-- _header: 式からアルゴリズムへ、木からDAGへ-->
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 
 <div class="columns">
@@ -701,7 +738,9 @@ $$
 
 <!-- _header: 式からアルゴリズムへ、木からDAGへ-->
 
-<div class="section"> 2.2 誤差なしの微分 ─数式微分 </div>
+
+<div class="section"> 2.2 数式微分 -式の表現と微分  </div>
+
 
 
 <div style="text-align: center;">
