@@ -665,12 +665,13 @@ JITrench.plot_graph(z, var_label=:name)
 
 ⇩
 
-Zygote.jl, Enzyme etc...
+Zygote.jl, Enzyme, TensorFlow in Swift etc...
 
 
 </div>
 
 
+---
 
 
 
