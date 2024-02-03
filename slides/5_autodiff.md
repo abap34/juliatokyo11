@@ -485,7 +485,7 @@ memory chunks as quickly as possible.
 <div class="cite">
 
 [1] Paszke, A., Gross, S., Chintala, S., Chanan, G., Yang, E., DeVito, Z., Lin, Z., Desmaison, A., Antiga, L. & Lerer, A. (2017). Automatic Differentiation in PyTorch. NIPS 2017 Workshop on Autodiff, .
-[2] 計算グラフとメモリの解放周辺で、Chainer の Aggressive Memory Release という仕組みがとても面白いです: [Aggressive buffer release #2368](https://github.com/chainer/chainer/issues/2368)
+[2] 計算グラフとメモリの解放周辺で、Chainer の Aggressive Buffer Release という仕組みがとても面白いです: [Aggressive buffer release #2368](https://github.com/chainer/chainer/issues/2368)
 
 </div>
 
@@ -553,7 +553,8 @@ end
 <div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
 
 
-✅ **トレース** $\cdots$ **実際にプログラムを実行し、その過程を記録することで計算グラフを得る**
+✅ **トレース** $\cdots$ **実際にプログラムを実行し、**
+**その過程を記録することで計算グラフを得る**
 
 
 ----
@@ -665,7 +666,9 @@ JITrench.plot_graph(z, var_label=:name)
 
 ⇩
 
-Zygote.jl, Enzyme, TensorFlow in Swift etc...
+Zygote.jl, Enzyme, Swift for Tensorflow etc...
+
+![h:50](../img/zygote.png) ![h:50](../img/enzyme.png) ![h:50](../img/swift.png) ![h:50](image-1.png)
 
 
 </div>

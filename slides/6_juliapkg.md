@@ -85,7 +85,11 @@ julia> df(2)
 
 ⇩
 
-Zygote.jl, Enzyme etc...
+Zygote.jl, Enzyme, Swift for Tensorflow etc...
+
+
+![h:50](../img/zygote.png) ![h:50](../img/enzyme.png) ![h:50](../img/swift.png) ![h:50](image-1.png)
+
 
 </div>
 
@@ -108,7 +112,8 @@ Zygote.jl, Enzyme etc...
 
 
 **✅ ソースコード変換**ベースのAD 
-**✅ JuliaのコードをSSA形式のIRに変換** して導関数を計算するコード(Adjoint Code) を生成
+**✅ JuliaのコードをSSA形式のIRに変換** して導関数を計算するコード
+(Adjoint Code) を生成
 
 </div>
 
@@ -130,7 +135,7 @@ julia> Zygote.@code_ir f(0.)
 ```
 
 
-</div>``
+</div>
 
 
 </div>
