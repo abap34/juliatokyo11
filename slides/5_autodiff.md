@@ -7,8 +7,10 @@ theme: honwaka
 
 <!-- _class: lead -->
 
-# **2.3 式の微分から**
-# **アルゴリズムの微分へ**
+# **2.3 自動微分**
+# **式からアルゴリズムへ**
+
+
 
 
 ---
@@ -16,7 +18,7 @@ theme: honwaka
 
 <!-- _header: アルゴリズムの表現 -->
 
-<div class="section"> 2.3 式の微分からアルゴリズムの微分へ </div>
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
 
 
 おさらい
@@ -103,7 +105,7 @@ $$
 
 <!-- _header: 計算グラフによる表現 -->
 
-<div class="section"> 2.3.1 計算グラフによる微分 </div>
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
 
 (一旦計算グラフを得たものとして、)　
 この構造から導関数を得ることを考えてみる.
@@ -112,6 +114,7 @@ $$
 
 <!-- _header: 連鎖律 -->
 
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
 
 <div class="thm">
 
@@ -319,7 +322,7 @@ end
 <!-- _header: Backward-Mode AD -->
 
 
-
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
 <div class="thm">
 
 
@@ -339,6 +342,8 @@ end
 
 <!-- _header: Forward-Mode AD -->
 
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
+
 :question: 一般の $f: \mathbb{R}^n \to \mathbb{R}^m$ について、常に逆向きに微分を辿るのがよい？
 
 
@@ -355,6 +360,7 @@ $m > n$ の場合を考えてみる
 
 ---
 
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
 
 <!-- _header: Forward-Mode AD -->
 
@@ -367,6 +373,7 @@ $m > n$ の場合を考えてみる
 ---
 
 <!-- _header: Backward / Forward-Mode AD -->
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
 
 - **逆向き自動微分 (Backward-Mode AD)**
 
@@ -390,6 +397,10 @@ $m > n$ の場合を考えてみる
 
 
 ---
+
+
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
+
 
 <!-- _header: 計算グラフ以外の表現 -->
 
@@ -457,8 +468,11 @@ $$
 
 ---
 
-
 <!-- _header: 計算グラフ vs Wengert List -->
+
+
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
+
 
 - PyTorch / Chainer は Wengert List ではなく計算グラフを使っている. [1]
 > **No tape**. Traditional reverse-mode differentiation records a tape (also known as a Wengert list) describing the order in which operations were originally executed; <中略>
@@ -479,15 +493,18 @@ memory chunks as quickly as possible.
 
 <!-- _header: 計算グラフをどう得るか？ -->
 
+
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
+
 :dog: < 計算グラフさえあれば計算ができることがわかった。
         では計算グラフをどう得るか？
 
 
 ---
 
-
 <!-- _header: 計算グラフをどう得るか？ -->
 
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
 
 <div class="columns">
 
@@ -533,14 +550,25 @@ end
 
 <!-- _header: トレースによる計算グラフの獲得 -->    
 
-✅ **トレース** $\cdots$ **実際にプログラムを実行し、その過程を記録することで微分**
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
+
+
+✅ **トレース** $\cdots$ **実際にプログラムを実行し、その過程を記録することで計算グラフを得る**
 
 
 ----
 
 <!-- _header: トレースの OO による典型的な実装 -->    
 
+
+
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
+
+
+
 <div class="def">
+
+
 
 
 **[典型的なトレースの実装]**
@@ -560,6 +588,8 @@ end
 
 <!-- _header: トレースの OO による典型的な実装 -->    
 
+
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
 
 ```julia
 import Base
@@ -587,6 +617,8 @@ Base.:*(x1::Scalar, x2::Scalar) = calc_and_build_graph(*, x1, x2)
 <br>
 
 
+
+
 **「実際そのときあった演算」** のみが記録され問題になる
 ⇨  制御構文がいくらあってもOK
 
@@ -610,6 +642,10 @@ JITrench.plot_graph(z, var_label=:name)
 
 <!-- _header: トレースの欠点 -->
 
+
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
+
+
 - 計算時にグラフを作ることによるオーバーヘッド
 - コンパイラの最適化の情報が消えてしまい恩恵をうけにくい
 
@@ -617,6 +653,11 @@ JITrench.plot_graph(z, var_label=:name)
 ---
 
 <!-- _header: トレースからソースコード変換へ -->
+
+
+
+<div class="section"> 2.3 自動微分 ─式からアルゴリズムへ  </div>
+
 
 - コンパイラと深く関わったレベルで自動微分をやっていこう！
 
