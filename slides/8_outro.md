@@ -363,6 +363,13 @@ $E(h) \approx \sqrt{n} \varepsilon + \dfrac{n f^{(n+1)}(x)}{(n+1)!} h^{n-1}$ ( $
 これの最小値を計算すると $h = \left(\dfrac{(n+1)!\varepsilon}{\sqrt{n}f^{(n+1)}(x)}\right)^{\frac{1}{n+1}}$. 
 
 
+<div class="cite">
+
+
+
+</div>
+
+
 ---
 
 
@@ -466,7 +473,7 @@ https://www.researchgate.net/figure/Number-of-parameters-ie-weights-in-recent-la
 
 <style scoped>
   {
-    font-size: 1.0em;
+    font-size: 0.7em;
   }
 </style>
 
@@ -492,8 +499,6 @@ https://www.researchgate.net/figure/Number-of-parameters-ie-weights-in-recent-la
    1. 実装のパラダイムやCheckpoint, 並列化などかなり広く触れられています
 7. [Zygote.jl のドキュメントの用語集](https://fluxml.ai/Zygote.jl/stable/glossary/)
    1. 自動微分は必要になった応用の人がやったり、コンパイラの人がやったり、数学の人がやったりで用語が乱立しまくっているのでこちらを参照して整理すると良いです
-   2. 僕の知る限り、 (若干のニュアンスがあるかもしれませんが) Reverse AD の別表現として以下があります.
-   Backward Mode AD = Reverse Mode AD = Fast Differentiation  = Adjoint Differentiation + その訳語たち, 微妙な表記揺れたち
 8. [JuliaDiff](https://juliadiff.org/)
    1. Julia での微分についてまとまっています.
 9.  [Chainer のソースコード](https://github.com/chainer)
