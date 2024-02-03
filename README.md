@@ -11,4 +11,3 @@
     ├── symboloc_diff.ipynb    # 数式微分
     └── utils.jl               # 数式微分関連の便利スクリプト (木のプロット, latexify, Wengert List への変換など)
 ```
-
