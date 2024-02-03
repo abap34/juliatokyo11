@@ -206,10 +206,9 @@ one of 深層学習の基盤
 ### [3] Juliaに微分させる
 3.1 FiniteDiff.jl/FiniteDifferences.jl
 3.1 ForwardDiff.jl
-3.2 Zygote.jl/Diffractor.jl
-3.3 AbstractDifferentiation.jl
+3.2 Zygote.jl
 
-### [5] まとめ 
+
 ### [6] 付録
 
 
@@ -280,5 +279,3 @@ one of 深層学習の基盤
    
 </div>
 
-
----
