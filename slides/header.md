@@ -27,3 +27,13 @@ $$
 ![bg blur](../img/surface.gif)
 
 ---
+
+<!-- _header: 各種リンク -->
+
+ソースコード・スライドのソース:
+https://github.com/abap34/juliatokyo11
+
+このスライド(アニメーション付きのhtml版):
+https://www.abap34.com/slides/juliatokyo11/slide.html
+
+
