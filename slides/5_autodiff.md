@@ -59,7 +59,7 @@ $$
 でのアルゴリズムの表現
 
 # **計算グラフ**
-##### **(Kantrovich グラフ)**
+##### **(Kantorovich グラフ)**
 
 
 ![bg right h:550](../img/cgraph0.png)
@@ -94,7 +94,7 @@ $$
 
 <div class="cite">
 
-単に計算過程を表しただけのものを Kantrovich グラフなどと呼び、
+単に計算過程を表しただけのものを Kantorovich グラフなどと呼び、
 これに偏導関数などの情報を加えたものを計算グラフと呼ぶような定義もあります.
 (伊里, 久保田 (1998) に詳しく形式的な定義があります)
 ただ、単に計算グラフというだけで計算過程を表現するグラフを指すという用法はかなり普及していて一般的と思われます。そのためここでもそれに従って計算過程を表現するグラフを計算グラフと呼びます.
@@ -390,7 +390,7 @@ $m > n$ の場合を考えてみる
 
 時間がないため割愛しましたが、 Forward-Mode AD の話でよく出てくる **二重数** というものがあります. $\varepsilon^2 = 0$ かつ $\varepsilon \neq 0$ なる $\varepsilon \notin \mathbb{R}$ を考え、
 これと実数からなる集合上の演算を素直に定義すると一見、不思議なことに微分が計算される... というような面白い数です。　
-興味があるかたは [「2乗してはじめて0になる数」とかあったら面白くないですか？ですよね - アジマティクス ](https://www.ajimatics.com/entry/2021/03/22/174633) や [ForwardDiff.jlのドキュメント](https://juliadiff.org/ForwardDiff.jl/stable/dev/how_it_works/)　などおすすmです。
+興味があるかたは [「2乗してはじめて0になる数」とかあったら面白くないですか？ですよね - アジマティクス ](https://www.ajimatics.com/entry/2021/03/22/174633) や [ForwardDiff.jlのドキュメント](https://juliadiff.org/ForwardDiff.jl/stable/dev/how_it_works/)　などおすすめです。
 
 
 </div>
